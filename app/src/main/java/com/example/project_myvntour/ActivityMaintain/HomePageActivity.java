@@ -45,7 +45,7 @@ public class HomePageActivity extends AppCompatActivity {
         btLogin = (Button) findViewById(R.id.btLogin);
 
         btLogin.setOnClickListener(view ->{
-            startActivity(new Intent());
+            startActivity(new Intent(HomePageActivity.this , LoginActivity.class));
         });
 
     }

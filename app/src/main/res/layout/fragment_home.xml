@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp"
+    tools:context=".Fragment.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_marginLeft="8dp"
+            android:imeOptions="actionSearch"
+            android:inputType="textCapSentences|textAutoComplete"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvghichu"
+            android:background="@drawable/vekhungnhap"
+            android:drawableLeft="@drawable/ic_baseline_search_24"
+            android:drawablePadding="10dp"
+            android:hint="Search address, or near you "
+            android:paddingLeft="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/xam"
+            android:textSize="12dp" />
+        <ImageButton
+            android:layout_gravity="center"
+            android:src="@drawable/ic_filer"
+            android:id="@+id/btLogin"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/btnFiler"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/gradient2"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:textAllCaps="false"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerviewCategory"/>
+    <RelativeLayout
+        android:layout_marginTop="27dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Near from you"/>
+        <TextView
+            android:id="@+id/tvSeeMoerGanNhat"
+            android:layout_alignParentRight="true"
+            android:textSize="16dp"
+            android:textColor="@color/xam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"/>
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerviewListHolderGanNhat"/>
+
+    <RelativeLayout
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Best for you"/>
+        <TextView
+            android:id="@+id/tvSeeMoreListChinh"
+            android:layout_alignParentRight="true"
+            android:textSize="16dp"
+            android:textColor="@color/xam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="See more"/>
+
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerviewListChinh"/>
+</LinearLayout>
