@@ -9,13 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
-        <activity android:name=".ActivityMaintain.MainActivity">
+        <activity android:name=".ActivityMaintain.LoginActivity"></activity>
+        <activity
+            android:name=".ActivityMaintain.HomePageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActivityMaintain.MainActivity"></activity>
     </application>
 
 </manifest>
