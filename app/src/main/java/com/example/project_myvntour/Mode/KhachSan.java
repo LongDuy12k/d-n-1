@@ -1,10 +1,33 @@
 package com.example.project_myvntour.Mode;
 
 public class KhachSan {
-    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images ,giaThue;
-    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh;
+    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images ,giaThue ,trangThaiLuu , soSao;
+    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan;
     private double kinhdo , vido ;
 
+    public int getTrangThaiLuu() {
+        return trangThaiLuu;
+    }
+
+    public void setTrangThaiLuu(int trangThaiLuu) {
+        this.trangThaiLuu = trangThaiLuu;
+    }
+
+    public int getSoSao() {
+        return soSao;
+    }
+
+    public void setSoSao(int soSao) {
+        this.soSao = soSao;
+    }
+
+    public String getLoaisachsan() {
+        return loaisachsan;
+    }
+
+    public void setLoaisachsan(String loaisachsan) {
+        this.loaisachsan = loaisachsan;
+    }
 
     public KhachSan() {
     }
@@ -17,7 +40,7 @@ public class KhachSan {
         this.giaThue = giaThue;
     }
 
-    public KhachSan(int id, int soluongPHongNGu, int soLUongPHongTam, int images, String tenKhachSan, String diaDiem, double kinhdo, double vido , int giathue) {
+    public KhachSan(int id, int soluongPHongNGu, int soLUongPHongTam, int images, String tenKhachSan, String diaDiem, double kinhdo, double vido , int giathue , String loaikhachsan, int trangThaiLuu , int soSao) {
         this.id = id;
         this.soluongPHongNGu = soluongPHongNGu;
         this.soLUongPHongTam = soLUongPHongTam;
@@ -27,6 +50,9 @@ public class KhachSan {
         this.kinhdo = kinhdo;
         this.vido = vido;
         this.giaThue = giathue;
+        this.loaisachsan = loaikhachsan;
+        this.trangThaiLuu = trangThaiLuu;
+        this.soSao = soSao;
     }
 
     public int getImages() {

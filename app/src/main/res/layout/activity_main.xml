@@ -110,7 +110,7 @@
                     android:layout_marginLeft="21dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_bookmark_border_24"/>
+                    android:src="@drawable/ic_baseline_bookmark_border_24_menu"/>
                 <TextView
                     android:textSize="16dp"
                     android:layout_marginLeft="20dp"

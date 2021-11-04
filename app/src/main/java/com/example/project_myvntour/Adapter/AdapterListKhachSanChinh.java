@@ -45,7 +45,7 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
         if(khach != null) {
             holder.ivAnhKhachSan.setImageResource(khach.getImages());
             holder.tvTenKhachSan.setText(khach.getTenKhachSan());
-            holder.tvSoTien.setText(fm.format(khach.getGiaThue()) + "VND/Year");
+            holder.tvSoTien.setText(fm.format(khach.getGiaThue()) + " VND/Year");
             holder.tvSoPhongBathRoom.setText(khach.getSoLUongPHongTam() + " BathRoom");
             holder.tvSoPhongBedRoom.setText(khach.getSoluongPHongNGu() + " BedRoom");
             holder.itemView.setOnClickListener(v->{
