@@ -2,6 +2,7 @@ package com.example.project_myvntour.ActivityMaintain;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.Manifest;
+import android.animation.LayoutTransition;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
@@ -18,9 +21,14 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.project_myvntour.Adapter.AdapterItemKhachSanMap;
@@ -55,16 +63,42 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
     private AdapterItemKhachSanMap adapter;
     private NumberFormat fm = new DecimalFormat("#,###");
     private MarkerOptions markerOptions;
+    private CardView cvBoLoc;
+    private View dongke;
+    private CheckBox cbHouse;
+    private CheckBox cbApartments;
+    private CheckBox cbHotel;
+    private CheckBox cbVilla;
+    private LinearLayout layoutContainer;
+    private LinearLayout mGridLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby);
+
+        // muốn map hiện lên phải có cái này
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
+
+
         mapFragment.getMapAsync(this);
         toolBar = (MaterialToolbar) findViewById(R.id.tool_bar2);
         recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
 
+
+        cvBoLoc = (CardView) findViewById(R.id.cvBoLoc);
+        dongke = (View) findViewById(R.id.dongke);
+        cbHouse = (CheckBox) findViewById(R.id.cbHouse);
+        cbApartments = (CheckBox) findViewById(R.id.cbApartments);
+        cbHotel = (CheckBox) findViewById(R.id.cbHotel);
+        cbVilla = (CheckBox) findViewById(R.id.cbVilla);
+
+
+        mGridLayout = (LinearLayout) findViewById(R.id.mGridLayout);
+
+       // Expandable Card View
+        layoutContainer = (LinearLayout) findViewById(R.id.layout_container);
+        layoutContainer.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
 
 
 
@@ -92,6 +126,8 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967};
         double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657};
 
+
+
         for(int i=0; i<id1.length; i++) {
             listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
                     tenkhachsan[i],
@@ -109,12 +145,13 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         recyclerview.setItemAnimator(new DefaultItemAnimator());
         recyclerview.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
         recyclerview.setAdapter(adapter);
+        // hàm lấy vị trí của item trong reclerview
         recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE){
-                    int position = getCurrentItem();
+                    int position = getCurrentItem();// lấy vị trí
                     KhachSan khach = listKhachSan.get(position);
                     liaCam(khach);
 
@@ -123,11 +160,17 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
             }
         });
 // dữ nguyên item của recylerview ở giữa màn hình có 2 cách
+
+
 //        SnapHelper snapHelper = new LinearSnapHelper();
 //        snapHelper.attachToRecyclerView(recyclerview);
         PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerview);
-
+        cvBoLoc.setOnClickListener(v->{
+            int view = (mGridLayout.getVisibility() == View.GONE) ?View.VISIBLE :View.GONE;
+            TransitionManager.beginDelayedTransition(layoutContainer , new AutoTransition());
+            mGridLayout.setVisibility(view);
+        });
 
 
     }
@@ -202,17 +245,20 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
             return;
         }
         mMap.setMyLocationEnabled(true);
-        getCurrentLocation();
+        getCurrentLocation();// hàm lấy vị trí chỗ mình đang đứng
         for ( KhachSan x: listKhachSan) {
-            getCurrentLocationItemMap(x);
+            getCurrentLocationItemMap(x);// hineje bảng giá ở trên map
         }
+        //tạo sự kiện click vào button
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
 
             // Return true if the click event is consumed (and therefore no
             // info window is displayed) or false to produce default behavior.
-
+            @SuppressLint("MissingPermission")
             public boolean onMarkerClick(final Marker marker) {
-
+                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                Criteria criteria = new Criteria();
+                Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
                // mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 13));
                 CameraPosition cameraPosition = new CameraPosition.Builder()
                         .target(new LatLng(marker.getPosition().latitude, marker.getPosition().longitude))
@@ -225,7 +271,14 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                 System.out.println("ddddddddddddddddddd" + marker.getTitle());
                 System.out.println("ddddddddddddddddddd" + marker.getTag());
                 System.out.println("ddddddddddddddddddd" + Integer.parseInt(marker.getId().substring(1)));
-                recyclerview.smoothScrollToPosition(Integer.parseInt(marker.getId().substring(1)) -1);// di chuyển đến vị trí của recylerview
+
+                if(!String.valueOf(marker.getPosition().latitude).equals(String.valueOf(location.getLatitude())) && !String.valueOf(marker.getPosition().longitude).equals(String.valueOf(location.getLongitude()))){// đoạn này phải check xem có trùng vị trí mình đang đứng không nếu mà trùng thì sẽ lỗi vì vị trí đứng không lấy trong recylerview
+                    recyclerview.smoothScrollToPosition(Integer.parseInt(marker.getId().substring(1)) -1);// di chuyển đến vị trí của recylerview
+                }else{
+                    return true; // thể hiện vị trí của người dùng không đc click vào nếu click vào sẽ bị văng lên là phải để là true
+                }
+
+
                 //return (marker != null && marker.getTag() != null && ((Boolean)marker.getTag()).booleanValue());
                 return false;
             }
@@ -250,6 +303,8 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                     .tilt(40)
                     .build();
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+            // vẽ maker
             LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
             currentUserLocation = myLocation;
              markerOptions = new MarkerOptions()
@@ -264,6 +319,8 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
             Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
         }
     }
+    //hàm này là hiện xin quyền map hiện dialog xin quền
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
