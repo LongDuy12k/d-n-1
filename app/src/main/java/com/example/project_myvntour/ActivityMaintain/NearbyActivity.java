@@ -60,6 +60,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
     private MaterialToolbar toolBar;
     private RecyclerView recyclerview;
     private List<KhachSan> listKhachSan;
+    private List<KhachSan> listKhachSan2;
     private AdapterItemKhachSanMap adapter;
     private NumberFormat fm = new DecimalFormat("#,###");
     private MarkerOptions markerOptions;
@@ -71,6 +72,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
     private CheckBox cbVilla;
     private LinearLayout layoutContainer;
     private LinearLayout mGridLayout;
+    private double a , b ,tong22 ,tong44;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,20 +113,21 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         listKhachSan = new ArrayList<>();
+        listKhachSan2 = new ArrayList<>();
         adapter = new AdapterItemKhachSanMap(this ,this);
 
-        int[] id1={ 1 , 2, 3, 4, 5};
-        int[] image = {R.drawable.anh5, R.drawable.anh4, R.drawable.anh3, R.drawable.anh2, R.drawable.anh1};
-        String[] tenkhachsan = {"Marriott International", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Accor Hotels", "Wyndham Hotel Group"};
-        String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group"};
-        String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos"};
-        int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 };
-        int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 };
-        int[]soSao ={ 3 , 4 ,5 ,2 ,1 };
-        int[]trangthai ={ 0 , 1 ,0 ,1 ,0 };
-        int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000};
-        double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967};
-        double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657};
+        int[] id1={ 1 , 2, 3, 4, 5 , 6};
+        int[] image = {R.drawable.anh5, R.drawable.anh4, R.drawable.anh3, R.drawable.anh2, R.drawable.anh1 , R.drawable.anh1};
+        String[] tenkhachsan = {"Marriott International", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Accor Hotels", "Wyndham Hotel Group" , "Chiến"};
+        String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group" , "Quốc Oai"};
+        String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos" , "Nhà Nghỉ"};
+        int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 ,5};
+        int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 ,7};
+        int[]soSao ={ 3 , 4 ,5 ,2 ,1  ,5};
+        int[]trangthai ={ 0 , 1 ,0 ,1 ,0 ,0};
+        int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000 , 200000};
+        double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967 , 20.9925088};
+        double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657 , 105.6372259};
 
 
 
@@ -139,9 +142,23 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                     ,LoaiKhachSan[i],trangthai[i] ,soSao[i]
             ));
         }
+        // sửa lí địa điểm gần nhất
 
-
-        adapter.setData(listKhachSan);
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        for (KhachSan khach: listKhachSan
+             ) {
+            a = location.getLatitude();
+            b = location.getLongitude();
+            tong22 = ((khach.getKinhdo() - a)*(khach.getKinhdo() - a)) + ((khach.getVido() - b)*(khach.getVido() - b));
+            tong44 = Math.sqrt(tong22);
+            if(tong44 <= 1){
+                listKhachSan2.add(khach);
+            }
+        }
+        // sửa lí địa điểm gần nhất
+        adapter.setData(listKhachSan2);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
         recyclerview.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
         recyclerview.setAdapter(adapter);
@@ -152,7 +169,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE){
                     int position = getCurrentItem();// lấy vị trí
-                    KhachSan khach = listKhachSan.get(position);
+                    KhachSan khach = listKhachSan2.get(position);
                     liaCam(khach);
 
 
@@ -215,22 +232,31 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         Criteria criteria = new Criteria();
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
 
-        if (location != null) {
-            LatLng myLocation = new LatLng(khach.getKinhdo(), khach.getVido());
-            currentUserLocation = myLocation;
-            IconGenerator iconfactory = new IconGenerator(this);
-            iconfactory.setBackground(getResources().getDrawable(R.drawable.marker_background));
-            iconfactory.setTextAppearance(R.style.iconGenText);
-             markerOptions = new MarkerOptions()
-                    .position(myLocation)
-                    .title(khach.getTenKhachSan())
-                    .snippet(khach.getDiaDiem())
-                    .icon(BitmapDescriptorFactory.fromBitmap(iconfactory.makeIcon(fm.format(khach.getGiaThue()) + " VND")));
-            currentUser = mMap.addMarker(markerOptions);
-            currentUser.setTag(false);
-        } else {
-            Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
-        }
+//         a = location.getLatitude();
+//         b = location.getLongitude();
+//         tong22 = ((khach.getKinhdo() - a)*(khach.getKinhdo() - a)) + ((khach.getVido() - b)*(khach.getVido() - b));
+//         tong44 = Math.sqrt(tong22);
+//       if(tong44 <= 1.0){
+            if (location != null) {
+                LatLng myLocation = new LatLng(khach.getKinhdo(), khach.getVido());
+                currentUserLocation = myLocation;
+                IconGenerator iconfactory = new IconGenerator(this);
+                iconfactory.setBackground(getResources().getDrawable(R.drawable.marker_background));
+                iconfactory.setTextAppearance(R.style.iconGenText);
+                markerOptions = new MarkerOptions()
+                        .position(myLocation)
+                        .title(khach.getTenKhachSan())
+                        .snippet(khach.getDiaDiem())
+                        .icon(BitmapDescriptorFactory.fromBitmap(iconfactory.makeIcon(fm.format(khach.getGiaThue()) + " VND")));
+                currentUser = mMap.addMarker(markerOptions);
+                currentUser.setTag(false);
+            } else {
+                Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
+            }
+//       }
+
+
+
     }
 
 
@@ -246,7 +272,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         }
         mMap.setMyLocationEnabled(true);
         getCurrentLocation();// hàm lấy vị trí chỗ mình đang đứng
-        for ( KhachSan x: listKhachSan) {
+        for ( KhachSan x: listKhachSan2) {
             getCurrentLocationItemMap(x);// hineje bảng giá ở trên map
         }
         //tạo sự kiện click vào button
@@ -275,7 +301,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                 if(!String.valueOf(marker.getPosition().latitude).equals(String.valueOf(location.getLatitude())) && !String.valueOf(marker.getPosition().longitude).equals(String.valueOf(location.getLongitude()))){// đoạn này phải check xem có trùng vị trí mình đang đứng không nếu mà trùng thì sẽ lỗi vì vị trí đứng không lấy trong recylerview
                     recyclerview.smoothScrollToPosition(Integer.parseInt(marker.getId().substring(1)) -1);// di chuyển đến vị trí của recylerview
                 }else{
-                    return true; // thể hiện vị trí của người dùng không đc click vào nếu click vào sẽ bị văng lên là phải để là true
+                     return (marker != null && marker.getTag() != null && ((Boolean)marker.getTag()).booleanValue()); // thể hiện vị trí của người dùng không đc click vào nếu click vào sẽ bị văng lên là phải để là true
                 }
 
 
@@ -313,7 +339,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                     .snippet("Hello MyVnTour Company")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
             currentUser = mMap.addMarker(markerOptions);
-            currentUser.setTag(true);
+            currentUser.setTag(false);
 
         } else {
             Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
