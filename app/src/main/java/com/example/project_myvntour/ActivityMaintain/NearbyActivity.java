@@ -143,20 +143,8 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
             ));
         }
         // sửa lí địa điểm gần nhất
+        getListGanNhat();
 
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
-        for (KhachSan khach: listKhachSan
-             ) {
-            a = location.getLatitude();
-            b = location.getLongitude();
-            tong22 = ((khach.getKinhdo() - a)*(khach.getKinhdo() - a)) + ((khach.getVido() - b)*(khach.getVido() - b));
-            tong44 = Math.sqrt(tong22);
-            if(tong44 <= 1){
-                listKhachSan2.add(khach);
-            }
-        }
         // sửa lí địa điểm gần nhất
         adapter.setData(listKhachSan2);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
@@ -216,7 +204,28 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
             Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
         }
     }
-
+    public void getListGanNhat(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(getBaseContext(), "Hãy cấp quyền truy cập GPS cho ứng dụng", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        if(location != null){
+            for (KhachSan khach: listKhachSan
+            ) {
+                a = location.getLatitude();
+                b = location.getLongitude();
+                tong22 = ((khach.getKinhdo() - a)*(khach.getKinhdo() - a)) + ((khach.getVido() - b)*(khach.getVido() - b));
+                tong44 = Math.sqrt(tong22);
+                if(tong44 <= 1){
+                    listKhachSan2.add(khach);
+                }
+            }
+        }
+    }
     private int getCurrentItem(){
         return ((LinearLayoutManager)recyclerview.getLayoutManager())
                 .findFirstVisibleItemPosition();
