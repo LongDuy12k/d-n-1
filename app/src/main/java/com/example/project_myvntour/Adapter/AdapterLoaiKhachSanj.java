@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.Mode.LoaiKhachSanj;
 import com.example.project_myvntour.R;
@@ -25,6 +26,7 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
     private boolean check = true;
     private UpdateRecyclerView mUpdateRecyclerView;
    private List<KhachSan> listKhachSan;
+   private SelectAll mSelectAll;
     public interface UpdateRecyclerView {
         public void callbacksChanged(int position , List<KhachSan> list );
         public void callbacksChanged2(int position , List<KhachSan> list );
@@ -34,6 +36,7 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
         this.mContext = context;
         this.list = list;
         this.mUpdateRecyclerView = mUpdateRecyclerView;
+        mSelectAll = new SelectAll(context);
     }
     @NonNull
     @Override
@@ -51,30 +54,7 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
         if(check){
             // trueyefn list nhà ở all
             listKhachSan = new ArrayList<>();
-            int[] id1={ 1 , 2, 3, 4, 5};
-            int[] image = {R.drawable.anh5, R.drawable.anh4, R.drawable.anh3, R.drawable.anh2, R.drawable.anh1};
-            String[] tenkhachsan = {"Marriott International", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Accor Hotels", "Wyndham Hotel Group"};
-            String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group"};
-            int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 };
-            int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 };
-            int[]soSao ={ 5 , 4 ,5 ,2 ,1 };
-            int[]trangthai ={ 0 , 0 ,0 ,0 ,0 };
-            int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000};
-            double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967};
-            double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657};
-            String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos"};
-            for(int i=0; i<id1.length; i++) {
-                listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
-                        tenkhachsan[i],
-                        diadiem[i],
-                        kinhdo[i],
-                        vido[i]
-                        ,
-                        giathue[i]
-                        ,
-                        LoaiKhachSan[i],trangthai[i] ,soSao[i]
-                ));
-            }
+            listKhachSan = mSelectAll.getListKhachSanByHotel(1);
             mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
             mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
             check = false;
@@ -89,81 +69,29 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
             if(position == 0){
                 // trueyefn list nhà ở all
                 listKhachSan = new ArrayList<>();
-                int[] id1={ 1 , 2, 3, 4, 5};
-                int[] image = {R.drawable.anh5, R.drawable.anh4, R.drawable.anh3, R.drawable.anh2, R.drawable.anh1};
-                String[] tenkhachsan = {"Marriott International", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Accor Hotels", "Wyndham Hotel Group"};
-                String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group"};
-                int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 };
-                int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 };
-                int[]soSao ={ 5 , 4 ,5 ,2 ,1 };
-                int[]trangthai ={ 0 , 0 ,0 ,0 ,0 };
-                int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000};
-                double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967};
-                double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657};
-                String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos"};
-                for(int i=0; i<id1.length; i++) {
-                    listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
-                            tenkhachsan[i],
-                            diadiem[i],
-                            kinhdo[i],
-                            vido[i]
-                            ,
-                            giathue[i] ,
-                            LoaiKhachSan[i],trangthai[i] ,soSao[i]
-                    ));
-                }
+                listKhachSan = mSelectAll.getListKhachSanByHotel(1);
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
 
             }else if(position == 1) {
                 listKhachSan = new ArrayList<>();
-                int[] id1={ 1 , 2, 3, 4, 5};
-                int[] image = { R.drawable.anh3, R.drawable.anh2,R.drawable.anh5, R.drawable.anh4, R.drawable.anh1};
-                String[] tenkhachsan = {"Marriott International" ,"Accor Hotels", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Wyndham Hotel Group"};
-                String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group"};
-                int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 };
-                int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 };
-                int[]soSao ={ 5 , 4 ,5 ,2 ,1 };
-                int[]trangthai ={ 0 , 0 ,0 ,0 ,0 };
-                int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000};
-                double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967};
-                double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657};
-                String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos"};
-                for(int i=0; i<id1.length; i++) {
-                    listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
-                            tenkhachsan[i],
-                            diadiem[i],
-                            kinhdo[i],
-                            vido[i]
-                            ,
-                            giathue[i] ,
-                            LoaiKhachSan[i],trangthai[i] ,soSao[i]
-                    ));
-                }
+              listKhachSan = mSelectAll.getListKhachSanByHotel(2);
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
             }
             else if(position == 2) {
-
+                listKhachSan = new ArrayList<>();
+                listKhachSan = mSelectAll.getListKhachSanByHotel(3);
+                mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
+                mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
             }
             else if(position == 3) {
-
+                listKhachSan = new ArrayList<>();
+                listKhachSan = mSelectAll.getListKhachSanByHotel(4);
+                mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
+                mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
             }
-            else if(position == 4) {
 
-            }
-            else if(position == 5) {
-
-            }
-            else if(position == 6) {
-
-            }
-            else if(position == 7) {
-
-            }
-            else if(position == 8) {
-
-            }
 
 
 

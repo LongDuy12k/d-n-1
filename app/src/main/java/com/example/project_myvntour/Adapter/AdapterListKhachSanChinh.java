@@ -1,6 +1,7 @@
 package com.example.project_myvntour.Adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
 
@@ -21,6 +23,7 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
     private List<KhachSan> list;
     private Context mContext;
     Listernaer mListerner;
+    public SelectAll mSelectAll;
     private NumberFormat fm = new DecimalFormat("#,###");
     public interface Listernaer{
         public void onClickListChinh(View v , int position);
@@ -28,6 +31,7 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
     public AdapterListKhachSanChinh (Context context , Listernaer mListerner){
         this.mContext = context;
         this.mListerner = mListerner;
+        mSelectAll= new SelectAll(context);
     }
     public void setDataListChinh(List<KhachSan> list){
         this.list = list;
@@ -44,10 +48,14 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
         KhachSan khach = list.get(position);
         if(khach != null) {
             holder.ivAnhKhachSan.setImageResource(khach.getImages());
+            List<byte[]> listPhot = mSelectAll.getListPhotById(khach.getId());
+            if(listPhot.size() >1) {
+                holder.ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listPhot.get(0) , 0 , listPhot.get(0).length));
+            }
             holder.tvTenKhachSan.setText(khach.getTenKhachSan());
-            holder.tvSoTien.setText(fm.format(khach.getGiaThue()) + " VND/Year");
+            holder.tvSoTien.setText("Chỉ Từ "+khach.getGiaThue());
             holder.tvSoPhongBathRoom.setText(khach.getSoLUongPHongTam() + " BathRoom");
-            holder.tvSoPhongBedRoom.setText(khach.getSoluongPHongNGu() + " BedRoom");
+            holder.tvSoPhongBedRoom.setText(khach.getSoLuongPHong() + " BedRoom");
             holder.itemView.setOnClickListener(v->{
                 mListerner.onClickListChinh(v , position);
             });

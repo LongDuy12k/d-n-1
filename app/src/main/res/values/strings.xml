@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Project_MyVnTour</string>
+    <string name="app_name">MyVnTour</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="long_text">Offering garden/city views, each unit comes with a kitchen, flat-screen satellite TV and Blu-ray player, a work desk, a washing machine and a private bathroom with a shower. /bathroom with slippers in the room. All apartments are arranged with seating and dining areas.</string>
+
 </resources>

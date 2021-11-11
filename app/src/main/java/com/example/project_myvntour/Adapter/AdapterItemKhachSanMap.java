@@ -1,6 +1,7 @@
 package com.example.project_myvntour.Adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
 
@@ -21,12 +23,14 @@ public class AdapterItemKhachSanMap extends RecyclerView.Adapter<AdapterItemKhac
     private List<KhachSan> list;
     private Context mContext;
     Listernaer mListerner;
+    private SelectAll mSelectAll;
     public interface Listernaer{
         public void onClickKhachSanMap(View v , int position);
     }
     public AdapterItemKhachSanMap (Context context , Listernaer mListerner){
         this.mContext = context;
         this.mListerner = mListerner;
+       this.mSelectAll = new SelectAll(context);
     }
     public void setData(List<KhachSan> list){
         this.list = list;
@@ -43,6 +47,10 @@ public class AdapterItemKhachSanMap extends RecyclerView.Adapter<AdapterItemKhac
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         KhachSan khacsan = list.get(position);
         if(khacsan != null){
+            List<byte[]> listphot = mSelectAll.getListPhotoById(khacsan.getId());
+            if(listphot.size() >=1 ){// doạn này lên check phòng trường hợp không lấy đc anh
+                holder.ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listphot.get(0) , 0 , listphot.get(0).length));
+            }
             holder.tvTenKhachSan.setText(khacsan.getTenKhachSan());
             holder.tvLoaiKhachSan.setText(khacsan.getLoaisachsan());
             holder.itemView.setOnClickListener(v->{
@@ -69,7 +77,7 @@ public class AdapterItemKhachSanMap extends RecyclerView.Adapter<AdapterItemKhac
 
                 holder.imgSaveLocation.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24);
             }
-            holder.ivAnhKhachSan.setImageResource(khacsan.getImages());
+
             holder.imgSaveLocation.setOnClickListener(v->{
                 if (khacsan.getTrangThaiLuu() == 0) {
                     khacsan.setTrangThaiLuu(1);

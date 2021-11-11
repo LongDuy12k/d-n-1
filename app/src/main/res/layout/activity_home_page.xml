@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ActivityMaintain.HomePageActivity">
+
+
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/image_slider"
         android:layout_width="match_parent"
@@ -22,6 +25,36 @@
         app:sliderIndicatorUnselectedColor="#FFF"
         app:sliderScrollTimeInSec="2"
         app:sliderStartAutoCycle="true"/>
+
+    <LinearLayout
+        android:layout_marginHorizontal="25dp"
+        android:layout_gravity="center|top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MyVnTour"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Let's see the world ."
+            android:textSize="14dp"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="That's better than any dream"
+            android:textSize="14dp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_marginHorizontal="25dp"
         android:layout_gravity="center|bottom"
@@ -29,27 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Are you ready?"
-            android:textSize="28dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Find your hotel easily and travel"
-            android:textSize="14dp"
-            android:textColor="@color/white"/>
-        <TextView
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="anywhere yout want with us"
-            android:textSize="14dp"
-            android:textColor="@color/white"/>
+
         <Button
             android:layout_marginTop="30dp"
             android:textSize="15dp"

@@ -1,8 +1,97 @@
 package com.example.project_myvntour.Mode;
 
 public class KhachSan {
-    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images ,giaThue ,trangThaiLuu , soSao;
-    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan;
+    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images  ,trangThaiLuu , soSao , WifiSanh , WifiPhong ,BeBoi ,DauXe , Spa ,VatNuoi , DieuHoa ,NhaHang ,Bar, Gym ,ChinhSachVS;
+
+    public int getChinhSachVS() {
+        return ChinhSachVS;
+    }
+
+    public void setChinhSachVS(int chinhSachVS) {
+        ChinhSachVS = chinhSachVS;
+    }
+
+    public int getWifiSanh() {
+        return WifiSanh;
+    }
+
+    public void setWifiSanh(int wifiSanh) {
+        WifiSanh = wifiSanh;
+    }
+
+    public int getWifiPhong() {
+        return WifiPhong;
+    }
+
+    public void setWifiPhong(int wifiPhong) {
+        WifiPhong = wifiPhong;
+    }
+
+    public int getBeBoi() {
+        return BeBoi;
+    }
+
+    public void setBeBoi(int beBoi) {
+        BeBoi = beBoi;
+    }
+
+    public int getDauXe() {
+        return DauXe;
+    }
+
+    public void setDauXe(int dauXe) {
+        DauXe = dauXe;
+    }
+
+    public int getSpa() {
+        return Spa;
+    }
+
+    public void setSpa(int spa) {
+        Spa = spa;
+    }
+
+    public int getVatNuoi() {
+        return VatNuoi;
+    }
+
+    public void setVatNuoi(int vatNuoi) {
+        VatNuoi = vatNuoi;
+    }
+
+    public int getDieuHoa() {
+        return DieuHoa;
+    }
+
+    public void setDieuHoa(int dieuHoa) {
+        DieuHoa = dieuHoa;
+    }
+
+    public int getNhaHang() {
+        return NhaHang;
+    }
+
+    public void setNhaHang(int nhaHang) {
+        NhaHang = nhaHang;
+    }
+
+    public int getBar() {
+        return Bar;
+    }
+
+    public void setBar(int bar) {
+        Bar = bar;
+    }
+
+    public int getGym() {
+        return Gym;
+    }
+
+    public void setGym(int gym) {
+        Gym = gym;
+    }
+
+    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan , giaThue;
     private double kinhdo , vido ;
 
     public int getTrangThaiLuu() {
@@ -32,15 +121,15 @@ public class KhachSan {
     public KhachSan() {
     }
 
-    public int getGiaThue() {
+    public String getGiaThue() {
         return giaThue;
     }
 
-    public void setGiaThue(int giaThue) {
+    public void setGiaThue(String giaThue) {
         this.giaThue = giaThue;
     }
 
-    public KhachSan(int id, int soluongPHongNGu, int soLUongPHongTam, int images, String tenKhachSan, String diaDiem, double kinhdo, double vido , int giathue , String loaikhachsan, int trangThaiLuu , int soSao) {
+    public KhachSan(int id, int soluongPHongNGu, int soLUongPHongTam, int images, String tenKhachSan, String diaDiem, double kinhdo, double vido , String giathue , String loaikhachsan, int trangThaiLuu , int soSao) {
         this.id = id;
         this.soluongPHongNGu = soluongPHongNGu;
         this.soLUongPHongTam = soLUongPHongTam;

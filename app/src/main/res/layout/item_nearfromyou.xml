@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_height="150dp">
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivAnhKhachSan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/anh5" />
+            <ImageView
+                android:layout_margin="2dp"
+                android:id="@+id/iconLuu"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bookmark_trang"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+
+            >
+                <TextView
+                    android:id="@+id/tvTenKhachSan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textSize="20dp"
+                    android:text="sdfssssssss"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:id="@+id/contensao"
+                android:layout_below="@+id/tvTenKhachSan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imsao1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sao"
+                    />
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/imsao1"
+                    android:id="@+id/imsao2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sao"
+                    />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/imsao2"
+                    android:id="@+id/imsao3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sao"
+                    />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/imsao3"
+                    android:id="@+id/imsao4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sao"
+                    />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_toEndOf="@+id/imsao4"
+                    android:id="@+id/imsao5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sao"
+                    />
+
+                <TextView
+                    android:textSize="10dp"
+                    android:padding="3dp"
+                    android:background="@drawable/textview_border"
+                    android:layout_marginLeft="6dp"
+                    android:id="@+id/tvTenTheLoai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Hotel"
+                    android:textColor="@color/blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/contensao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_maker"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/tvLoaiKhachSan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Hà nội"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+
+            <TextView
+
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                android:id="@+id/tienthue"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="2450"
+                android:textColor="@color/blue" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

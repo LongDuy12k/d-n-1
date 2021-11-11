@@ -14,11 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ActivityMaintain.MapsActivity" />
-
-
-
-
-
         <RelativeLayout
             android:layout_marginBottom="20dp"
             android:layout_gravity="center|bottom"
@@ -26,101 +21,7 @@
             android:layout_height="wrap_content">
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_alignParentRight="true"
-                android:id="@+id/cvBoLoc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/recyclerview"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="15dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
 
-                <LinearLayout
-                    android:id="@+id/layout_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:animateLayoutChanges="true"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:paddingLeft="5dp"
-                            android:src="@drawable/ic_baseline_location_on_24" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="Explore this area"
-                            android:textColor="@color/blue"
-                            android:textSize="12dp" />
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/dongke"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/blue" />
-
-                    <LinearLayout
-                        android:id="@+id/mGridLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:visibility="gone">
-
-                        <CheckBox
-                            android:id="@+id/cbHouse"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/etPassword"
-                            android:buttonTint="@color/blue"
-                            android:text="House"
-                            android:textColor="@color/black" />
-
-                        <CheckBox
-                            android:id="@+id/cbApartments"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/etPassword"
-                            android:buttonTint="@color/blue"
-                            android:text="Apartments"
-                            android:textColor="@color/black" />
-
-                        <CheckBox
-                            android:id="@+id/cbHotel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/etPassword"
-                            android:buttonTint="@color/blue"
-                            android:text="Hotel"
-                            android:textColor="@color/black" />
-
-                        <CheckBox
-                            android:id="@+id/cbVilla"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/etPassword"
-                            android:buttonTint="@color/blue"
-                            android:text="Villa"
-                            android:textColor="@color/black" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
             <androidx.recyclerview.widget.RecyclerView
 
                 android:layout_width="match_parent"

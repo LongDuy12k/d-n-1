@@ -15,6 +15,7 @@ import android.Manifest;
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -23,6 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.CheckBox;
@@ -32,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.project_myvntour.Adapter.AdapterItemKhachSanMap;
+import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -70,9 +73,12 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
     private CheckBox cbApartments;
     private CheckBox cbHotel;
     private CheckBox cbVilla;
+    private CheckBox cbAll;
     private LinearLayout layoutContainer;
     private LinearLayout mGridLayout;
     private double a , b ,tong22 ,tong44;
+    private SelectAll mSelectAll;
+    private View vKhong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,19 +94,11 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         recyclerview = (RecyclerView) findViewById(R.id.recyclerview);
 
 
-        cvBoLoc = (CardView) findViewById(R.id.cvBoLoc);
-        dongke = (View) findViewById(R.id.dongke);
-        cbHouse = (CheckBox) findViewById(R.id.cbHouse);
-        cbApartments = (CheckBox) findViewById(R.id.cbApartments);
-        cbHotel = (CheckBox) findViewById(R.id.cbHotel);
-        cbVilla = (CheckBox) findViewById(R.id.cbVilla);
 
-
-        mGridLayout = (LinearLayout) findViewById(R.id.mGridLayout);
 
        // Expandable Card View
-        layoutContainer = (LinearLayout) findViewById(R.id.layout_container);
-        layoutContainer.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGE_DISAPPEARING);
+
+
 
 
 
@@ -114,39 +112,19 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
 
         listKhachSan = new ArrayList<>();
         listKhachSan2 = new ArrayList<>();
+        mSelectAll =new SelectAll(this);
         adapter = new AdapterItemKhachSanMap(this ,this);
-
-        int[] id1={ 1 , 2, 3, 4, 5 , 6};
-        int[] image = {R.drawable.anh5, R.drawable.anh4, R.drawable.anh3, R.drawable.anh2, R.drawable.anh1 , R.drawable.anh1};
-        String[] tenkhachsan = {"Marriott International", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Accor Hotels", "Wyndham Hotel Group" , "Chiến"};
-        String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group" , "Quốc Oai"};
-        String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos" , "Nhà Nghỉ"};
-        int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 ,5};
-        int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 ,7};
-        int[]soSao ={ 3 , 4 ,5 ,2 ,1  ,5};
-        int[]trangthai ={ 0 , 1 ,0 ,1 ,0 ,0};
-        int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000 , 200000};
-        double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967 , 20.9925088};
-        double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657 , 105.6372259};
+        listKhachSan = mSelectAll.getListKhachSan();
 
 
 
-        for(int i=0; i<id1.length; i++) {
-            listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
-                    tenkhachsan[i],
-                    diadiem[i],
-                    kinhdo[i],
-                    vido[i]
-                    ,
-                    giathue[i]
-                    ,LoaiKhachSan[i],trangthai[i] ,soSao[i]
-            ));
-        }
+
         // sửa lí địa điểm gần nhất
-        getListGanNhat();
+        getListGanNhat(listKhachSan);
 
         // sửa lí địa điểm gần nhất
         adapter.setData(listKhachSan2);
+
         recyclerview.setItemAnimator(new DefaultItemAnimator());
         recyclerview.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
         recyclerview.setAdapter(adapter);
@@ -171,11 +149,13 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
 //        snapHelper.attachToRecyclerView(recyclerview);
         PagerSnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerview);
-        cvBoLoc.setOnClickListener(v->{
-            int view = (mGridLayout.getVisibility() == View.GONE) ?View.VISIBLE :View.GONE;
-            TransitionManager.beginDelayedTransition(layoutContainer , new AutoTransition());
-            mGridLayout.setVisibility(view);
-        });
+//        cvBoLoc.setOnClickListener(v->{
+//            int view = (mGridLayout.getVisibility() == View.GONE) ?View.VISIBLE :View.GONE;
+//          //  int view2 = (vKhong.getVisibility() == View.GONE) ?View.VISIBLE :View.GONE;
+//            TransitionManager.beginDelayedTransition(layoutContainer , new AutoTransition());
+//            mGridLayout.setVisibility(view);
+//           // vKhong.setVisibility(view2);
+//        });
 
 
     }
@@ -204,7 +184,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
             Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
         }
     }
-    public void getListGanNhat(){
+    public void getListGanNhat(List<KhachSan> list){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(getBaseContext(), "Hãy cấp quyền truy cập GPS cho ứng dụng", Toast.LENGTH_SHORT).show();
@@ -214,13 +194,13 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         Criteria criteria = new Criteria();
         @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
         if(location != null){
-            for (KhachSan khach: listKhachSan
+            for (KhachSan khach: list
             ) {
                 a = location.getLatitude();
                 b = location.getLongitude();
                 tong22 = ((khach.getKinhdo() - a)*(khach.getKinhdo() - a)) + ((khach.getVido() - b)*(khach.getVido() - b));
                 tong44 = Math.sqrt(tong22);
-                if(tong44 <= 1){
+                if(tong44 <= 1000){
                     listKhachSan2.add(khach);
                 }
             }
@@ -256,7 +236,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                         .position(myLocation)
                         .title(khach.getTenKhachSan())
                         .snippet(khach.getDiaDiem())
-                        .icon(BitmapDescriptorFactory.fromBitmap(iconfactory.makeIcon(fm.format(khach.getGiaThue()) + " VND")));
+                        .icon(BitmapDescriptorFactory.fromBitmap(iconfactory.makeIcon(khach.getGiaThue())));
                 currentUser = mMap.addMarker(markerOptions);
                 currentUser.setTag(false);
             } else {
@@ -383,7 +363,8 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onClickKhachSanMap(View v, int position) {
-
+        startActivity(new Intent(NearbyActivity.this , InFoKhachSanActivity.class));
     }
+
 
 }

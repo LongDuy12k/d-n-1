@@ -1,5 +1,6 @@
 package com.example.project_myvntour.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.project_myvntour.ActivityMaintain.InFoKhachSanActivity;
+import com.example.project_myvntour.ActivityMaintain.NearbyActivity;
 import com.example.project_myvntour.Adapter.AdapterKhachSanj;
 import com.example.project_myvntour.Adapter.AdapterListKhachSanChinh;
 import com.example.project_myvntour.Adapter.AdapterLoaiKhachSanj;
@@ -60,38 +63,18 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         mSelectAll = new SelectAll(getActivity());
         listLoaiKhachSanj = mSelectAll.getListLoaiKhachSan();
 
-//        int id,
-//        int soluongPHongNGu,
-//        int soLUongPHongTam,
-//        int images, String tenKhachSan,
-//                String diaDiem,
-//        double kinhdo,
-//        double vido
-        int[] id1={ 1 , 2, 3, 4, 5};
-        int[] image = {R.drawable.anh5, R.drawable.anh4, R.drawable.anh3, R.drawable.anh2, R.drawable.anh1};
-        String[] tenkhachsan = {"Marriott International", "Hilton Worldwide", "InterContinental Hotels Group (IHG)", "Accor Hotels", "Wyndham Hotel Group"};
-        String[] diadiem = {"Tiểu bang Maryland, Mỹ", "Bang Virginia, Mỹ", "Denham, Vương quốc Anh", "Paris, Pháp", "Wyndham Hotel Group"};
-        String[] LoaiKhachSan = {"Hotel", "Apartments", "Villa", "Wooden house", "Condos"};
-        int[]soluongPHongNGu ={ 5 , 7 ,8 ,3 ,5 };
-        int[]soLUongPHongTam ={ 9 , 2 ,2 ,4 ,3 };
-        int[]soSao ={ 5 , 4 ,5 ,2 ,1 };
-        int[]trangthai ={ 0 , 0 ,0 ,0 ,0 };
-        int[]giathue ={ 9000000,20000000 ,4000000 ,300000 , 60000000};
-        double[] kinhdo = {20.7554032 , 20.7305544 , 20.7310787, 20.7316318, 20.7318967};
-        double[] vido = {106.3717384, 106.3940725, 106.3965079, 106.3958132, 106.393657};
-
-        for(int i=0; i<id1.length; i++) {
-            listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
-                    tenkhachsan[i],
-                    diadiem[i],
-                    kinhdo[i],
-                    vido[i]
-                    ,
-                    giathue[i]
-                    ,LoaiKhachSan[i],trangthai[i] ,soSao[i]
-                    ));
-        }
-
+//        for(int i=0; i<id1.length; i++) {
+//            listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
+//                    tenkhachsan[i],
+//                    diadiem[i],
+//                    kinhdo[i],
+//                    vido[i]
+//                    ,
+//                    giathue[i]
+//                    ,LoaiKhachSan[i],trangthai[i] ,soSao[i]
+//                    ));
+//        }
+       // listKhachSan = mSelectAll.getListKhachSanByHotel(1);
         mAdapterLoaiKhachSanj = new AdapterLoaiKhachSanj(getActivity() , listLoaiKhachSanj , this);
         mAdapterKhachSanj = new AdapterKhachSanj(getActivity() , this);
         mAdapterListKhachSanChinh = new AdapterListKhachSanChinh(getActivity() , this);
@@ -107,6 +90,15 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         recyclerviewListHolderGanNhat.setAdapter(mAdapterKhachSanj);
         recyclerviewListChinh.setAdapter(mAdapterListKhachSanChinh);
         // Inflate the layout for this fragment
+
+        tvSeeMoerGanNhat.setOnClickListener(v->{
+
+        });
+        tvSeeMoreListChinh.setOnClickListener(v->{
+
+        });
+
+
         return view;
 
 
@@ -117,6 +109,9 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
     @Override
     public void callbacksChanged(int position, List<KhachSan> list) {
         mAdapterKhachSanj = new AdapterKhachSanj(getActivity() , this);
+
+
+
         mAdapterKhachSanj.setData(list);
         recyclerviewListHolderGanNhat.setAdapter(mAdapterKhachSanj);
     }
@@ -128,14 +123,14 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         recyclerviewListChinh.setAdapter(mAdapterListKhachSanChinh);
     }
 
-    // list khách sạn gần nhất
+    //click list khách sạn gần nhất
     @Override
     public void onClick(View v, int position) {
-
+        startActivity(new Intent(getActivity() , InFoKhachSanActivity.class));
     }
-
+    //click list khách sạn chính
     @Override
     public void onClickListChinh(View v, int position) {
-
+        startActivity(new Intent(getActivity() , InFoKhachSanActivity.class));
     }
 }
