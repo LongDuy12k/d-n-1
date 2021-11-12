@@ -17,7 +17,10 @@
         android:roundIcon="@drawable/logoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
-        <activity android:name=".ActivityMaintain.ChoseRoomActivity"></activity>
+        <activity android:name=".ActivityMaintain.ImageActivity"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen"
+            ></activity>
+        <activity android:name=".ActivityMaintain.ChoseRoomActivity" />
         <activity android:name=".ActivityMaintain.HygienepolicyActivity" />
         <activity android:name=".ActivityMaintain.ServiceFacilitiesActivity" />
         <activity android:name=".ActivityMaintain.BestForYouActivity" />

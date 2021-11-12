@@ -47,6 +47,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.maps.android.ui.IconGenerator;
 
+import java.io.Serializable;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -95,6 +96,7 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
     Marker currentUser, searchPoint;
     LatLng currentUserLocation, searchPointLocation;
     private GoogleMap mMap;
+    List<byte[]> listPhot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,11 +168,14 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
         tvSeeMoerChinhSachVeSinh.setOnClickListener(v->{
             startActivity(new Intent(InFoKhachSanActivity.this, HygienepolicyActivity.class));
         });
+        btnRentNow.setOnClickListener(v->{
+
+        });
 
 
     }
     public void showData() {
-        List<byte[]> listPhot = mSelectAll.getListPhotById(khach.getId());
+         listPhot = mSelectAll.getListPhotById(khach.getId());
         mAdapterGarryAllen.setData(listPhot);
         listimageanh.setAdapter(mAdapterGarryAllen);
         if(listPhot.size() >1) {
@@ -250,7 +255,9 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
     }
     @Override
     public void clickShowImageView(View view, int position) {
-
+        Intent inten = new Intent(InFoKhachSanActivity.this , ImageActivity.class);
+        inten.putExtra("image" ,khach );
+        startActivity(inten);
     }
 
     @Override
