@@ -37,7 +37,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder>{
         return images.length;
     }
 
-    public class Holder extends  ViewHolder{
+    public class Holder extends SliderAdapter.ViewHolder{
 
         ImageView imageView;
 

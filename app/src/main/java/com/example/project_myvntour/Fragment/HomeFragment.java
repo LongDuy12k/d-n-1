@@ -63,18 +63,6 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         mSelectAll = new SelectAll(getActivity());
         listLoaiKhachSanj = mSelectAll.getListLoaiKhachSan();
 
-//        for(int i=0; i<id1.length; i++) {
-//            listKhachSan.add(new KhachSan(id1[i] , soluongPHongNGu[i] , soLUongPHongTam [i] ,image[i] ,
-//                    tenkhachsan[i],
-//                    diadiem[i],
-//                    kinhdo[i],
-//                    vido[i]
-//                    ,
-//                    giathue[i]
-//                    ,LoaiKhachSan[i],trangthai[i] ,soSao[i]
-//                    ));
-//        }
-       // listKhachSan = mSelectAll.getListKhachSanByHotel(1);
         mAdapterLoaiKhachSanj = new AdapterLoaiKhachSanj(getActivity() , listLoaiKhachSanj , this);
         mAdapterKhachSanj = new AdapterKhachSanj(getActivity() , this);
         mAdapterListKhachSanChinh = new AdapterListKhachSanChinh(getActivity() , this);
@@ -108,11 +96,9 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
 // list loại khách sạn
     @Override
     public void callbacksChanged(int position, List<KhachSan> list) {
+        listKhachSan = list;
         mAdapterKhachSanj = new AdapterKhachSanj(getActivity() , this);
-
-
-
-        mAdapterKhachSanj.setData(list);
+        mAdapterKhachSanj.setData(listKhachSan);
         recyclerviewListHolderGanNhat.setAdapter(mAdapterKhachSanj);
     }
 
@@ -126,11 +112,17 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
     //click list khách sạn gần nhất
     @Override
     public void onClick(View v, int position) {
-        startActivity(new Intent(getActivity() , InFoKhachSanActivity.class));
+        KhachSan khach = listKhachSan.get(position);
+        Intent intent = new Intent(getActivity() , InFoKhachSanActivity.class);
+        intent.putExtra("khachsan" , khach);
+        startActivity(intent);
     }
     //click list khách sạn chính
     @Override
     public void onClickListChinh(View v, int position) {
-        startActivity(new Intent(getActivity() , InFoKhachSanActivity.class));
+        KhachSan khach = listKhachSan.get(position);
+        Intent intent = new Intent(getActivity() , InFoKhachSanActivity.class);
+        intent.putExtra("khachsan" , khach);
+        startActivity(intent);
     }
 }

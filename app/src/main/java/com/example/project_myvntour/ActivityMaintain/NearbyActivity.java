@@ -363,7 +363,10 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
 
     @Override
     public void onClickKhachSanMap(View v, int position) {
-        startActivity(new Intent(NearbyActivity.this , InFoKhachSanActivity.class));
+        KhachSan khach = listKhachSan.get(position);
+        Intent intent = new Intent(NearbyActivity.this , InFoKhachSanActivity.class);
+        intent.putExtra("khachsan" , khach);
+        startActivity(intent);
     }
 
 

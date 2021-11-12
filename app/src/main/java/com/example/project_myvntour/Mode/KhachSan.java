@@ -1,6 +1,8 @@
 package com.example.project_myvntour.Mode;
 
-public class KhachSan {
+import java.io.Serializable;
+
+public class KhachSan implements Serializable {
     private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images  ,trangThaiLuu , soSao , WifiSanh , WifiPhong ,BeBoi ,DauXe , Spa ,VatNuoi , DieuHoa ,NhaHang ,Bar, Gym ,ChinhSachVS;
 
     public int getChinhSachVS() {
