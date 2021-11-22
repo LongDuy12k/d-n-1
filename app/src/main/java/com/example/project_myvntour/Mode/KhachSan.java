@@ -3,7 +3,34 @@ package com.example.project_myvntour.Mode;
 import java.io.Serializable;
 
 public class KhachSan implements Serializable {
-    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images  ,trangThaiLuu , soSao , WifiSanh , WifiPhong ,BeBoi ,DauXe , Spa ,VatNuoi , DieuHoa ,NhaHang ,Bar, Gym ,ChinhSachVS;
+    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images  ,trangThaiLuu , soSao , WifiSanh , WifiPhong ,BeBoi ,DauXe , Spa ,VatNuoi , DieuHoa ,NhaHang ,Bar, Gym ,ChinhSachVS ;
+    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan , giaThue, tenChuKhachSan , soDienThoaiChuKhachSan;
+    private double kinhdo , vido ;
+    private byte[] anhchukhachsan ;
+
+    public String getTenChuKhachSan() {
+        return tenChuKhachSan;
+    }
+
+    public void setTenChuKhachSan(String tenChuKhachSan) {
+        this.tenChuKhachSan = tenChuKhachSan;
+    }
+
+    public String getSoDienThoaiChuKhachSan() {
+        return soDienThoaiChuKhachSan;
+    }
+
+    public void setSoDienThoaiChuKhachSan(String soDienThoaiChuKhachSan) {
+        this.soDienThoaiChuKhachSan = soDienThoaiChuKhachSan;
+    }
+
+    public byte[] getAnhchukhachsan() {
+        return anhchukhachsan;
+    }
+
+    public void setAnhchukhachsan(byte[] anhchukhachsan) {
+        this.anhchukhachsan = anhchukhachsan;
+    }
 
     public int getChinhSachVS() {
         return ChinhSachVS;
@@ -93,8 +120,7 @@ public class KhachSan implements Serializable {
         Gym = gym;
     }
 
-    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan , giaThue;
-    private double kinhdo , vido ;
+
 
     public int getTrangThaiLuu() {
         return trangThaiLuu;

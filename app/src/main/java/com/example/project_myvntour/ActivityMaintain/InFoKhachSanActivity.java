@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -171,6 +172,13 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
         btnRentNow.setOnClickListener(v->{
 
         });
+        btLogin.setOnClickListener(v->{
+            String mobilephone = khach.getSoDienThoaiChuKhachSan();
+            String call = "tel:" + mobilephone.trim();
+            Intent i = new Intent(Intent.ACTION_DIAL);
+            i.setData(Uri.parse(call));
+            startActivity(i);
+        });
 
 
     }
@@ -181,6 +189,8 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
         if(listPhot.size() >1) {
             ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listPhot.get(0) , 0 , listPhot.get(0).length));
         }
+        hinhanhquanli.setImageBitmap(BitmapFactory.decodeByteArray(khach.getAnhchukhachsan() , 0  , khach.getAnhchukhachsan().length));
+        tenQuanLi.setText(khach.getTenChuKhachSan());
         tvDiaChi.setText(khach.getDiaDiem());
         tvTenKhachSan.setText(khach.getTenKhachSan());
         tvSoPhongBedRoom.setText(khach.getSoLuongPHong()+" BedRoom");

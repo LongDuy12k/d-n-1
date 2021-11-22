@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project_myvntour.Adapter.adpaterAnh;
 import com.example.project_myvntour.Adapter.pageAdpater;
@@ -63,6 +64,7 @@ public class ImageActivity extends AppCompatActivity implements adpaterAnh.liste
             public void onPageSelected(int position) {
                 tvBd.setText(position+1+"");
                 recycle.smoothScrollToPosition(position);
+
             }
             @Override
             public void onPageScrollStateChanged(int state) {

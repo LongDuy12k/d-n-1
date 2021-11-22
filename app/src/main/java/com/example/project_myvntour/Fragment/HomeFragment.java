@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.project_myvntour.ActivityMaintain.InFoKhachSanActivity;
+import com.example.project_myvntour.ActivityMaintain.NearFromYouActivity2;
 import com.example.project_myvntour.ActivityMaintain.NearbyActivity;
 import com.example.project_myvntour.Adapter.AdapterKhachSanj;
 import com.example.project_myvntour.Adapter.AdapterListKhachSanChinh;
@@ -80,7 +81,8 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         // Inflate the layout for this fragment
 
         tvSeeMoerGanNhat.setOnClickListener(v->{
-
+            Intent i = new Intent(getActivity(), NearFromYouActivity2.class);
+            startActivity(i);
         });
         tvSeeMoreListChinh.setOnClickListener(v->{
 
