@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.project_myvntour.ActivityMaintain.BestForYouActivity;
 import com.example.project_myvntour.ActivityMaintain.InFoKhachSanActivity;
 import com.example.project_myvntour.ActivityMaintain.NearFromYouActivity2;
 import com.example.project_myvntour.ActivityMaintain.NearbyActivity;
@@ -85,14 +86,11 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
             startActivity(i);
         });
         tvSeeMoreListChinh.setOnClickListener(v->{
-
+            Intent i = new Intent(getActivity(), BestForYouActivity.class);
+            startActivity(i);
         });
 
-
         return view;
-
-
-
 
     }
 // list loại khách sạn
