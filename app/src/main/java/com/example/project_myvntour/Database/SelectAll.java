@@ -9,6 +9,7 @@ import android.widget.DatePicker;
 import com.example.project_myvntour.Mode.KhachHang;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.Mode.LoaiKhachSanj;
+import com.example.project_myvntour.Mode.Phong;
 import com.example.project_myvntour.Mode.TIENNGHIDV;
 
 import java.sql.Connection;
@@ -93,6 +94,34 @@ public class SelectAll {
                     ks.setTenChuKhachSan(rs.getString("Ten"));
                     ks.setTrangThaiLuu(rs.getInt("TrangThai"));
                     list.add(ks);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Phong> getListPhong(int id){
+        List<Phong> list = new ArrayList<>();
+        try {
+            if(connection!=null){
+                String sql = "select * from PHONG where MaKS ="+id;
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while (rs.next()){
+                    Phong phong = new Phong();
+                    phong.setId_Phong(rs.getInt(1));
+                    phong.setId_Ks(rs.getInt(2));
+                    phong.setTenPhong(rs.getString(3));
+                    phong.setSoPhong(rs.getInt(4));
+                    phong.setDienTich(rs.getInt(5));
+                    phong.setGia(rs.getInt(6));
+                    phong.setSoGiuong(rs.getInt(7));
+                    phong.setNguoiLon(rs.getInt(8));
+                    phong.setTreNho(rs.getInt(9));
+                    phong.setMoTa(rs.getString(10));
+                    list.add(phong);
                 }
             }
         }catch (Exception e){
@@ -206,6 +235,24 @@ public class SelectAll {
 
     }
 
+    public List<byte[]> getListAnhPhong(int id) {
+        List<byte[]> list = new ArrayList<byte[]>();
+        try {
+            if (connection!=null){
+                Statement st = connection.createStatement();
+                ResultSet rs ;
+                String sql = "Select * from HINHANHPHONG where MaPhong =" + id;
+                rs = st.executeQuery(sql);
+                while (rs.next()) {
+                    list.add(rs.getBytes("HinhAnh"));
+                }
+
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
     public List<byte[]> getListPhotById(int id) {
         List<byte[]> list = new ArrayList<byte[]>();
@@ -252,5 +299,50 @@ public class SelectAll {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public Boolean CheckLogin(String u , String p){
+        try {
+                String sql = "select * from KHACHHANG where UserName = '"+u+"' and Pass ='"+p+"' ";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                if(rs.next()){
+                    return true;
+                }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public Boolean Signin(String e, String u, String p){
+        try {
+            String sql = "insert into KHACHHANG (Email , UserName, Pass)\n" +
+                    "values ('"+e+"','"+u+"','"+p+"')";
+            Statement st = connection.createStatement();
+            if(st.executeUpdate(sql)>0){
+                return true;
+            }
+        }catch (Exception ee){
+            ee.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean CheckUser(String u){
+        try {
+            String sql = "select * from KHACHHANG where UserName = '"+u+"'";
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                return true;
+            }
+            if(st.executeUpdate(sql)>0){
+                return false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
     }
 }

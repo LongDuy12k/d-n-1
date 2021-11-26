@@ -170,7 +170,9 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
             startActivity(new Intent(InFoKhachSanActivity.this, HygienepolicyActivity.class));
         });
         btnRentNow.setOnClickListener(v->{
-
+            Intent intent = new Intent(InFoKhachSanActivity.this , PhongActivity.class);
+            intent.putExtra("khachsan" ,khach);
+            startActivity(intent);
         });
         btLogin.setOnClickListener(v->{
             String mobilephone = khach.getSoDienThoaiChuKhachSan();

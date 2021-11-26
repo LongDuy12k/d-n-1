@@ -18,12 +18,12 @@ public class HomePageActivity extends AppCompatActivity {
     private SliderView imageSlider;
     private Button btLogin;
     SliderView sliderView;
-    int[] images = {R.drawable.anhthuysi1,
-            R.drawable.anhthuysi4,
-            R.drawable.anhtuysi5,
-            R.drawable.anhthuysi2,
-            R.drawable.anhthuysi3,
-            R.drawable.anhtuysi4};
+    int[] images = {R.drawable.anh1,
+            R.drawable.anh2,
+            R.drawable.anh3,
+            R.drawable.anh4,
+            R.drawable.anh5,
+            R.drawable.a};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
