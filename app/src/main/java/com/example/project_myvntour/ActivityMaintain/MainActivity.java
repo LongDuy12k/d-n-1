@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.itemHelp:
-
+                startActivity(new Intent(this,RevenuaActivity.class));
                 break;
             case R.id.itemLogout:
                 comFirmExit();
