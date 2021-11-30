@@ -3,18 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable-v24/vekhungnhap1.xml" value="0.2703125" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/gradient4.xml" value="0.21979166666666666" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/gradientbackground.xml" value="0.21979166666666666" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/ic_baseline_arrow_back_ios_new_24.xml" value="0.2601851851851852" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.26615384615384613" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/ic_dieuhoa.xml" value="0.2601851851851852" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/khunglogin.xml" value="0.2703125" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/vekhungnhap.xml" value="0.2703125" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/drawable/vekhungnhap1.xml" value="0.2703125" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_best_for_you.xml" value="0.1793478260869565" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_home_page.xml" value="0.10643115942028986" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_in_fo_khach_san.xml" value="0.16666666666666666" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_login.xml" value="0.1598731884057971" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_near_from_you2.xml" value="0.1793478260869565" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_nearby.xml" value="0.2391304347826087" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_phong.xml" value="0.16666666666666666" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_revenua.xml" value="0.2" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/activity_signin.xml" value="0.2" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/fragment_home.xml" value="0.13496376811594202" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/fragment_revenua.xml" value="0.2391304347826087" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/fragment_revenue.xml" value="0.24010416666666667" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/item_child.xml" value="0.2391304347826087" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/item_group.xml" value="0.2391304347826087" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/item_nearfromyou.xml" value="0.16666666666666666" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/item_photo_gallery.xml" value="0.16666666666666666" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/item_room.xml" value="0.264" />
@@ -26,8 +37,11 @@
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/slider_item.xml" value="0.12360688956433637" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/tool_bar2.xml" value="0.16666666666666666" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/tool_bar3.xml" value="0.16666666666666666" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/tool_bar4.xml" value="0.2391304347826087" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/tool_bar5.xml" value="0.12360688956433637" />
         <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/tool_bar6.xml" value="0.16666666666666666" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/layout/tool_bar7.xml" value="0.2391304347826087" />
+        <entry key="..\:/Du_An_1/Project_MyVnTour/app/src/main/res/menu/itemboomak.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
