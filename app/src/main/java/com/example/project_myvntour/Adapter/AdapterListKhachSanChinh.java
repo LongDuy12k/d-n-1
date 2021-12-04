@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,14 +19,19 @@ import com.example.project_myvntour.R;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKhachSanChinh.ViewHolder> {
+public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKhachSanChinh.ViewHolder> implements Filterable {
     private List<KhachSan> list;
     private Context mContext;
     Listernaer mListerner;
     public SelectAll mSelectAll;
+    private List<KhachSan> listTemp;
     private NumberFormat fm = new DecimalFormat("#,###");
+
+
+
     public interface Listernaer{
         public void onClickListChinh(View v , int position);
     }
@@ -35,6 +42,7 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
     }
     public void setDataListChinh(List<KhachSan> list){
         this.list = list;
+        this.listTemp = list;
     }
     @NonNull
     @Override
@@ -84,5 +92,34 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
             tvSoPhongBathRoom = (TextView) itemView.findViewById(R.id.tvSoPhongBathRoom);
 
         }
+    }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String query = constraint.toString();
+                if(query.isEmpty()){
+                    list = listTemp;
+                }else {
+                    List<KhachSan> list1 = new ArrayList<>();
+                    for (KhachSan khachSan : listTemp){
+                        if(khachSan.getTenKhachSan().toLowerCase().contains(query.toLowerCase())){
+                            list1.add(khachSan);
+                        }
+                        list = list1;
+                    }
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = list;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                list = (List<KhachSan>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

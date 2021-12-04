@@ -1,5 +1,6 @@
 package com.example.project_myvntour.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -45,7 +46,7 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
        View view =LayoutInflater.from(parent.getContext()).inflate(R.layout.itemloaikhachsan, parent, false);
        return new ViewHolder(view);
     }
-
+    @SuppressLint ("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull  AdapterLoaiKhachSanj.ViewHolder holder, int position) {
         LoaiKhachSanj loai = list.get(position);

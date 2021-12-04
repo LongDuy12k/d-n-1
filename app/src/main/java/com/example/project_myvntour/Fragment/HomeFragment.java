@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +90,27 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         tvSeeMoreListChinh.setOnClickListener(v->{
             Intent i = new Intent(getActivity(), BestForYouActivity.class);
             startActivity(i);
+        });
+
+        etSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                mAdapterKhachSanj.getFilter().filter(etSearch.getText().toString());
+                mAdapterListKhachSanChinh.getFilter().filter(etSearch.getText().toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mAdapterKhachSanj.getFilter().filter(etSearch.getText().toString());
+                mAdapterListKhachSanChinh.getFilter().filter(etSearch.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mAdapterKhachSanj.getFilter().filter(etSearch.getText().toString());
+                mAdapterListKhachSanChinh.getFilter().filter(etSearch.getText().toString());
+            }
         });
 
         return view;
