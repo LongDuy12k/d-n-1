@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project_myvntour.ActivityMaintain.BestForYouActivity;
 import com.example.project_myvntour.ActivityMaintain.InFoKhachSanActivity;
@@ -91,28 +94,21 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
             Intent i = new Intent(getActivity(), BestForYouActivity.class);
             startActivity(i);
         });
-
-        etSearch.addTextChangedListener(new TextWatcher() {
-
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                mAdapterKhachSanj.getFilter().filter(etSearch.getText().toString());
-                mAdapterListKhachSanChinh.getFilter().filter(etSearch.getText().toString());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mAdapterKhachSanj.getFilter().filter(etSearch.getText().toString());
-                mAdapterListKhachSanChinh.getFilter().filter(etSearch.getText().toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                mAdapterKhachSanj.getFilter().filter(etSearch.getText().toString());
-                mAdapterListKhachSanChinh.getFilter().filter(etSearch.getText().toString());
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//                   Toast.makeText(getActivity(), "helllo", Toast.LENGTH_SHORT).show();
+                    listKhachSan = mSelectAll.listTK(etSearch.getText().toString());
+                    mAdapterListKhachSanChinh.setDataListChinh(listKhachSan);
+                    mAdapterKhachSanj.setData(listKhachSan);
+                    recyclerviewListChinh.setAdapter(mAdapterListKhachSanChinh);
+                    recyclerviewListHolderGanNhat.setAdapter(mAdapterKhachSanj);
+                    return true;
+                }
+                return false;
             }
         });
-
         return view;
 
     }

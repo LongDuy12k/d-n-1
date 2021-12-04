@@ -345,4 +345,57 @@ public class SelectAll {
         }
         return false;
     }
+
+    public List<KhachSan> listTK(String tk){
+        List<KhachSan> list = new ArrayList<KhachSan>();
+        try {
+            if(connection !=null){
+                String sql = "\n" +
+                        "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                        "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
+                        "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                        "CHECKTT.TrangThai\n" +
+                        "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
+                        "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
+                        "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
+                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where KHACHSAN.TenKS like '%"+tk+"%'";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()) {
+                    KhachSan ks = new KhachSan();
+                    ks.setId(rs.getInt("MaKS"));
+                    ks.setTenKhachSan(rs.getString("TenKS"));
+                    ks.setSoSao(rs.getInt("Hang"));
+                    ks.setChinhsachveSinh(String.valueOf(rs.getInt("ChinhSachVS")));
+                    ks.setDiaDiem(rs.getString("DiaDiem"));
+                    ks.setKinhdo(rs.getDouble("Latitude"));
+                    ks.setVido(rs.getDouble("Longitude"));
+                    ks.setTimeNhan(rs.getString("TimeDat"));
+                    ks.setTimetra(rs.getString("TimeTra"));
+                    ks.setSoLuongPHong(rs.getInt("SoLuongP"));
+                    ks.setMota(rs.getString("MoTa"));
+                    ks.setLoaisachsan(rs.getString("TenLH"));
+                    ks.setWifiSanh(rs.getInt("WifiSanh"));
+                    ks.setWifiPhong(rs.getInt("WifiPhong"));
+                    ks.setBeBoi(rs.getInt("BeBoi"));
+                    ks.setDauXe(rs.getInt("DauXe"));
+                    ks.setSpa(rs.getInt("Spa"));
+                    ks.setVatNuoi(rs.getInt("VatNuoi"));
+                    ks.setDieuHoa(rs.getInt("DieuHoa"));
+                    ks.setNhaHang(rs.getInt("NhaHang"));
+                    ks.setBar(rs.getInt("Bar"));
+                    ks.setGym(rs.getInt("Gym"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
+                    ks.setAnhchukhachsan(rs.getBytes("Anh"));
+                    ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
+                    ks.setTenChuKhachSan(rs.getString("Ten"));
+                    ks.setTrangThaiLuu(rs.getInt("TrangThai"));
+                    list.add(ks);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
