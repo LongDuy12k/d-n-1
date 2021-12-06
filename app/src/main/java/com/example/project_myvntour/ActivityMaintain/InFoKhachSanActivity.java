@@ -49,6 +49,8 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.maps.android.ui.IconGenerator;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -97,6 +99,7 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
     Marker currentUser, searchPoint;
     LatLng currentUserLocation, searchPointLocation;
     private GoogleMap mMap;
+    private NumberFormat fm = new DecimalFormat("#,###");
     List<byte[]> listPhot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,7 +202,7 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
         tvMoto.setText(khach.getMota());
         timeNhan.setText(khach.getTimeNhan() +" - ");
         timeTra.setText(khach.getTimetra());
-        GiaMoPhong.setText(khach.getGiaThue());
+        GiaMoPhong.setText(fm.format(khach.getGiaThue()) + "VND");
         if(khach.getWifiPhong() == 0){
             liWifiTaiPhong.setAlpha(0.4f);
         }
@@ -207,11 +210,9 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
             liWifiTaiSanh.setAlpha(0.4f);
         }
             if(khach.getBeBoi() == 0){
-            System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
             libeboi.setAlpha(0.4f);
         }
             if(khach.getSpa() == 0){
-            System.out.println("11111111111111111111111111111111111111111111111111111");
             lispa.setAlpha(0.4f);
         }
 

@@ -236,7 +236,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                         .position(myLocation)
                         .title(khach.getTenKhachSan())
                         .snippet(khach.getDiaDiem())
-                        .icon(BitmapDescriptorFactory.fromBitmap(iconfactory.makeIcon(khach.getGiaThue())));
+                        .icon(BitmapDescriptorFactory.fromBitmap(iconfactory.makeIcon(fm.format(khach.getGiaThue()) + " VND")));
                 currentUser = mMap.addMarker(markerOptions);
                 currentUser.setTag(false);
             } else {

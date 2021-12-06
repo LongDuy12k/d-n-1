@@ -16,6 +16,8 @@ import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 public class AdapterBestForYou extends RecyclerView.Adapter<AdapterBestForYou.ViewHolder>{
@@ -23,6 +25,7 @@ public class AdapterBestForYou extends RecyclerView.Adapter<AdapterBestForYou.Vi
     private Context mContext;
     Listerner mListerner;
     public SelectAll mSelectAll;
+    private NumberFormat fm = new DecimalFormat("#,###");
     public interface Listerner{
         public void onClick(View v , int position);
     }
@@ -70,7 +73,7 @@ public class AdapterBestForYou extends RecyclerView.Adapter<AdapterBestForYou.Vi
 
             holder.tvTenTheLoai.setText(khach.getLoaisachsan());
             holder.tvLoaiKhachSan.setText(khach.getDiaDiem());
-            holder.tienthue.setText(khach.getGiaThue());
+            holder.tienthue.setText(fm.format(khach.getGiaThue()) + "VND");
             holder.itemView.setOnClickListener(v->{
                 mListerner.onClick(v , position);
             });

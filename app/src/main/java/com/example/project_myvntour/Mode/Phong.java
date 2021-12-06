@@ -3,7 +3,7 @@ package com.example.project_myvntour.Mode;
 import java.io.Serializable;
 
 public class Phong implements Serializable {
-    private int id_Phong, id_Ks, gia, dienTich, soGiuong, nguoiLon, treNho, soPhong;
+    private int id_Phong, id_Ks, gia, dienTich, soGiuong, nguoiLon, treNho, soPhong , dieuhoa , tivi , ketantoan , tulanh , bep , ban , wifi , dichvuphong , maygiat , maysaytoc , banui , khonghutthuoc , bontam ;
     private String tenPhong, moTa;
 
     public Phong() {
@@ -20,6 +20,110 @@ public class Phong implements Serializable {
         this.soPhong = soPhong;
         this.tenPhong = tenPhong;
         this.moTa = moTa;
+    }
+
+    public int getDieuhoa() {
+        return dieuhoa;
+    }
+
+    public void setDieuhoa(int dieuhoa) {
+        this.dieuhoa = dieuhoa;
+    }
+
+    public int getTivi() {
+        return tivi;
+    }
+
+    public void setTivi(int tivi) {
+        this.tivi = tivi;
+    }
+
+    public int getKetantoan() {
+        return ketantoan;
+    }
+
+    public void setKetantoan(int ketantoan) {
+        this.ketantoan = ketantoan;
+    }
+
+    public int getTulanh() {
+        return tulanh;
+    }
+
+    public void setTulanh(int tulanh) {
+        this.tulanh = tulanh;
+    }
+
+    public int getBep() {
+        return bep;
+    }
+
+    public void setBep(int bep) {
+        this.bep = bep;
+    }
+
+    public int getBan() {
+        return ban;
+    }
+
+    public void setBan(int ban) {
+        this.ban = ban;
+    }
+
+    public int getWifi() {
+        return wifi;
+    }
+
+    public void setWifi(int wifi) {
+        this.wifi = wifi;
+    }
+
+    public int getDichvuphong() {
+        return dichvuphong;
+    }
+
+    public void setDichvuphong(int dichvuphong) {
+        this.dichvuphong = dichvuphong;
+    }
+
+    public int getMaygiat() {
+        return maygiat;
+    }
+
+    public void setMaygiat(int maygiat) {
+        this.maygiat = maygiat;
+    }
+
+    public int getMaysaytoc() {
+        return maysaytoc;
+    }
+
+    public void setMaysaytoc(int maysaytoc) {
+        this.maysaytoc = maysaytoc;
+    }
+
+    public int getBanui() {
+        return banui;
+    }
+
+    public void setBanui(int banui) {
+        this.banui = banui;
+    }
+
+    public int getKhonghutthuoc() {
+        return khonghutthuoc;
+    }
+
+    public void setKhonghutthuoc(int khonghutthuoc) {
+        this.khonghutthuoc = khonghutthuoc;
+    }
+
+    public int getBontam() {
+        return bontam;
+    }
+
+    public void setBontam(int bontam) {
+        this.bontam = bontam;
     }
 
     public int getId_Phong() {

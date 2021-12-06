@@ -24,6 +24,7 @@ public class HomePageActivity extends AppCompatActivity {
             R.drawable.anh4,
             R.drawable.anh5,
             R.drawable.a};
+    byte[] list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

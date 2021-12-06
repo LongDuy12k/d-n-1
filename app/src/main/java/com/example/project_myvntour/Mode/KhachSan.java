@@ -3,8 +3,8 @@ package com.example.project_myvntour.Mode;
 import java.io.Serializable;
 
 public class KhachSan implements Serializable {
-    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images  ,trangThaiLuu , soSao , WifiSanh , WifiPhong ,BeBoi ,DauXe , Spa ,VatNuoi , DieuHoa ,NhaHang ,Bar, Gym ,ChinhSachVS ;
-    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan , giaThue, tenChuKhachSan , soDienThoaiChuKhachSan;
+    private int id , idLoai , hang , soLuongPHong , soluongPHongNGu , soLUongPHongTam , soKhacToDa , images  ,trangThaiLuu , soSao , WifiSanh , WifiPhong ,BeBoi ,DauXe , Spa ,VatNuoi , DieuHoa ,NhaHang ,Bar, Gym ,ChinhSachVS ,giaThue;
+    private String tenKhachSan , diaDiem , timetra , timeNhan ,Mota , tenPhong , tienNghi , chinhsachveSinh , loaisachsan ,  tenChuKhachSan , soDienThoaiChuKhachSan;
     private double kinhdo , vido ;
     private byte[] anhchukhachsan ;
 
@@ -149,28 +149,15 @@ public class KhachSan implements Serializable {
     public KhachSan() {
     }
 
-    public String getGiaThue() {
+    public int getGiaThue() {
         return giaThue;
     }
 
-    public void setGiaThue(String giaThue) {
+    public void setGiaThue(int giaThue) {
         this.giaThue = giaThue;
     }
 
-    public KhachSan(int id, int soluongPHongNGu, int soLUongPHongTam, int images, String tenKhachSan, String diaDiem, double kinhdo, double vido , String giathue , String loaikhachsan, int trangThaiLuu , int soSao) {
-        this.id = id;
-        this.soluongPHongNGu = soluongPHongNGu;
-        this.soLUongPHongTam = soLUongPHongTam;
-        this.images = images;
-        this.tenKhachSan = tenKhachSan;
-        this.diaDiem = diaDiem;
-        this.kinhdo = kinhdo;
-        this.vido = vido;
-        this.giaThue = giathue;
-        this.loaisachsan = loaikhachsan;
-        this.trangThaiLuu = trangThaiLuu;
-        this.soSao = soSao;
-    }
+
 
     public int getImages() {
         return images;

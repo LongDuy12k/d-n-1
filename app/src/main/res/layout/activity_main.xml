@@ -148,6 +148,7 @@
 
             </LinearLayout>
             <LinearLayout
+                android:visibility="gone"
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/khungitemmenu"

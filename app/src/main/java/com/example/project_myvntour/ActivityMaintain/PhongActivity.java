@@ -34,13 +34,8 @@ public class PhongActivity extends AppCompatActivity implements AdapterPhong.Lis
         selectAll = new SelectAll(this);
         toolBar =findViewById(R.id.tool_bar2);
         setSupportActionBar(toolBar);
-        toolBar.setNavigationIcon(R.drawable.ic_back);
-        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         KhachSan khach = (KhachSan) this.getIntent().getSerializableExtra("khachsan");
         getSupportActionBar().setTitle(khach.getTenKhachSan());
         recyclerViewPhong.setLayoutManager(new LinearLayoutManager(this));
@@ -53,11 +48,25 @@ public class PhongActivity extends AppCompatActivity implements AdapterPhong.Lis
 
     @Override
     public void DatPhong(View v, int position) {
-
+        startActivity(new Intent(PhongActivity.this, BookNowActivity.class));
     }
 
     @Override
     public void AnhPhong(View v, int position) {
 
+    }
+
+    @Override
+    public void onItemClick(View v, int position) {
+        Phong x = list.get(position);
+        Intent i = new Intent(this, InfoRoomActivity.class);
+        i.putExtra("phong" , x);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.onBackPressed();
+        return super.onSupportNavigateUp();
     }
 }

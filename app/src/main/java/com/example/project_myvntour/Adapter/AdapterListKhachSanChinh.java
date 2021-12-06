@@ -61,7 +61,7 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
                 holder.ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listPhot.get(0) , 0 , listPhot.get(0).length));
             }
             holder.tvTenKhachSan.setText(khach.getTenKhachSan());
-            holder.tvSoTien.setText("Chỉ Từ "+khach.getGiaThue());
+            holder.tvSoTien.setText("Chỉ Từ "+fm.format(khach.getGiaThue()) + "VND");
             holder.tvSoPhongBathRoom.setText(khach.getSoLUongPHongTam() + " BathRoom");
             holder.tvSoPhongBedRoom.setText(khach.getSoLuongPHong() + " BedRoom");
             holder.itemView.setOnClickListener(v->{
