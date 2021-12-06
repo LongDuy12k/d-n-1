@@ -19,9 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
         <activity
+            android:name=".ActivityMaintain.Profile_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityMaintain.RevenuaActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ActivityMaintain.PhongActivity"
             android:exported="false" />
@@ -57,12 +59,16 @@
         <activity
             android:name=".ActivityMaintain.SigninActivity"
             android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen"></activity>
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
         <activity
             android:name=".ActivityMaintain.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen">
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ActivityMaintain.HomePageActivity"
@@ -71,11 +77,7 @@
         <activity
             android:name=".ActivityMaintain.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

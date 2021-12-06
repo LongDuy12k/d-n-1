@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.itemProfile:
-
+                startActivity(new Intent(this,Profile_Activity.class));
                 break;
             case R.id.idNearby:
                 startActivity(new Intent(this, NearbyActivity.class));
