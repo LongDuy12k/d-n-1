@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btLogin;
     private LinearLayout ll1;
     private TextView textDangKi;
+    public static String userName = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 etPassword.setError("password is empty");
             }else {
                 if(selectAll.CheckLogin(u,p)==true){
+                    userName = u;
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }else {
                     Toast.makeText(this, "Incorrect username or password", Toast.LENGTH_SHORT).show();

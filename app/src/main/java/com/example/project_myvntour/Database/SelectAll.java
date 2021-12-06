@@ -88,7 +88,7 @@ public class SelectAll {
                     ks.setNhaHang(rs.getInt("NhaHang"));
                     ks.setBar(rs.getInt("Bar"));
                     ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
                     ks.setAnhchukhachsan(rs.getBytes("Anh"));
                     ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
                     ks.setTenChuKhachSan(rs.getString("Ten"));
@@ -202,7 +202,7 @@ public class SelectAll {
                     ks.setNhaHang(rs.getInt("NhaHang"));
                     ks.setBar(rs.getInt("Bar"));
                     ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
                     ks.setAnhchukhachsan(rs.getBytes("Anh"));
                     ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
                     ks.setTenChuKhachSan(rs.getString("Ten"));
@@ -345,35 +345,4 @@ public class SelectAll {
         }
         return false;
     }
-    public Phong getPHongById(int id){
-        Phong phong = new Phong();
-        try {
-            if(connection!=null){
-                String sql = "select * from TIENNGHIPHONG where TIENNGHIPHONG.MaPhong = "+id;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()){
-
-                    phong.setDieuhoa(rs.getInt(3));
-                    phong.setTivi(rs.getInt(4));
-                    phong.setKetantoan(rs.getInt(5));
-                    phong.setTulanh(rs.getInt(6));
-                    phong.setBep(rs.getInt(7));
-                    phong.setBan(rs.getInt(8));
-                    phong.setWifi(rs.getInt(9));
-                    phong.setDichvuphong(rs.getInt(10));
-                    phong.setMaygiat(rs.getInt(11));
-                    phong.setMaysaytoc(rs.getInt(12));
-                    phong.setBanui(rs.getInt(13));
-                    phong.setKhonghutthuoc(rs.getInt(14));
-                    phong.setBontam(rs.getInt(15));
-
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return phong;
-    }
-
 }

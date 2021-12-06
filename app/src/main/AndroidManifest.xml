@@ -18,12 +18,10 @@
         android:roundIcon="@drawable/logoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
-        <activity android:name=".ActivityMaintain.BookNowActivity"></activity>
-        <activity android:name=".ActivityMaintain.ImagePhongActivity" />
-        <activity android:name=".ActivityMaintain.InfoRoomActivity" />
         <activity
             android:name=".ActivityMaintain.RevenuaActivity"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".ActivityMaintain.PhongActivity"
             android:exported="false" />
@@ -59,11 +57,13 @@
         <activity
             android:name=".ActivityMaintain.SigninActivity"
             android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen"></activity>
         <activity
             android:name=".ActivityMaintain.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen">
+
+        </activity>
         <activity
             android:name=".ActivityMaintain.HomePageActivity"
             android:exported="true"
