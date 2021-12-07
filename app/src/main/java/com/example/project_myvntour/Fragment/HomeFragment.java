@@ -25,6 +25,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project_myvntour.ActivityMaintain.BestForYouActivity;
 import com.example.project_myvntour.ActivityMaintain.InFoKhachSanActivity;
@@ -38,6 +39,8 @@ import com.example.project_myvntour.Mode.LoaiKhachSanj;
 import com.example.project_myvntour.R;
 import com.innovattic.rangeseekbar.RangeSeekBar;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -200,7 +203,6 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         WindowManager.LayoutParams layoutParams = window.getAttributes();
         layoutParams.gravity = gravity;
         window.setAttributes(layoutParams);
-
         TextView giaMin;
         TextView giaMax;
         RangeSeekBar seekbar;
@@ -214,7 +216,6 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         CheckBox btnResort;
         Button btnHuy;
         Button btnLoc;
-
         giaMin = dialog.findViewById(R.id.giaMin);
         giaMax = dialog.findViewById(R.id.giaMax);
         seekbar = dialog.findViewById(R.id.seekbar);
@@ -228,34 +229,29 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         btnResort = dialog.findViewById(R.id.btn_resort);
         btnHuy = dialog.findViewById(R.id.btn_huy);
         btnLoc = dialog.findViewById(R.id.btn_loc);
-
+        NumberFormat format = new DecimalFormat("#,###");
         // seekbar
         seekbar.setMinRange(0);
         seekbar.setMax(5000000);
         final int[] min = {0};
-        final int[] max = {0};
+        final int[] max = {5000000};
         seekbar.setSeekBarChangeListener(new RangeSeekBar.SeekBarChangeListener() {
             @Override
             public void onStartedSeeking() {
-
             }
-
             @Override
             public void onStoppedSeeking() {
-
             }
-
             @Override
             public void onValueChanged(int i, int i1) {
                 min[0] = i;
                 max[0] = i1;
                 if(i1 == 5000000){
-                    giaMax.setText(i1+"đ+");
+                    giaMax.setText(format.format(i1)+"đ+");
                 }else {
-                    giaMax.setText(i1+"đ");
+                    giaMax.setText(format.format(i1)+"đ");
                 }
-                giaMin.setText(i+"đ");
-
+                giaMin.setText(format.format(i)+"đ");
             }
         });
         //
@@ -268,7 +264,122 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
         btnLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listKhachSan = mSelectAll.getListKhachSanLoc(min[0],max[0]);
+                int h1 = 0,h2=0,h3=0,h4=0,h5=0;
+                int l1 =0,l2=0,l3=0,l4=0,l5=0;
+                StringBuilder builder = new StringBuilder();
+                StringBuilder builder1 = new StringBuilder();
+                if(btn2sao.isChecked()){
+                    builder.append(1);
+                    builder.append(2);
+                }if(btn3sao.isChecked()){
+                    builder.append(3);
+                }if(btn4sao.isChecked()){
+                    builder.append(4);
+                }if(btn5sao.isChecked()){
+                    builder.append(5);
+                }if(btnHotel.isChecked()){
+                    builder1.append(1);
+                }if(btnVila.isChecked()){
+                    builder1.append(2);
+                }if(btnResort.isChecked()){
+                    builder1.append(3);
+                }if(btnApatment.isChecked()){
+                    builder1.append(4);
+                }
+                String chuoi = builder.toString();
+                String chuoi1 = builder1.toString();
+                if(chuoi == ""){
+                    h1 = 1;h2 = 2; h3 = 3;h4 = 4;h5 = 5;
+                }else {
+                    int check = Integer.parseInt(chuoi);
+                    if(check == 12){
+                        h1 = 1;
+                        h2=h3=h4=h5=2;
+                    }if(check == 3){
+                        h1=h2=h3=h4=h5 = 3;
+                    }if(check == 4){
+                        h1=h2=h3=h4=h5 = 4;
+                    }if(check == 5){
+                        h1=h2=h3=h4=h5 = 5;
+                    }if(check == 123){
+                        h1 = 1;
+                        h2 = 2;
+                        h3=h4=h5=3;
+                    }if(check == 124){
+                        h1 = 1;
+                        h2 = 2;
+                        h3=h4=h5=4;
+                    }if(check == 125){
+                        h1 = 1;
+                        h2 = 2;
+                        h3=h4=h5=5;
+                    }if(check == 1234){
+                        h1 = 1;
+                        h2 = 2;
+                        h3 = 3;
+                        h4 =h5=4;
+                    }if(check == 1235){
+                        h1 = 1;
+                        h2 = 2;
+                        h3 = 3;
+                        h4 =h5=5;
+                    }if(check == 34){
+                        h1 = 3;
+                        h2=h3=h4=h5=4;
+                    }
+                    if(check == 35){
+                        h1 = 3;
+                        h2=h3=h4=h5=5;
+                    }
+                    if(check == 45){
+                        h1 = 4;
+                        h2=h3=h4=h5=5;
+                    }if(check == 12345){
+                        h1 = 1;
+                        h2 = 2;
+                        h3 = 3;
+                        h4 = 4;
+                        h5 = 5;
+                    }
+                }
+//                loại ks
+                if(chuoi1 == ""){
+                    l1=1;l2=2;l3=3;l4=4;
+                }else {
+                    int check1 = Integer.parseInt(chuoi1);
+                    if(check1 == 1){
+                        l1=l2=l3=l4=1;
+                    }if(check1 == 2){
+                        l1=l2=l3=l4=2;
+                    }if(check1 == 3){
+                        l1=l2=l3=l4=3;
+                    }if(check1 == 4){
+                        l1=l2=l3=l4=4;
+                    }if(check1 == 12){
+                        l1 = 1;
+                        l2=l3=l4=2;
+                    }if(check1 == 13){
+                        l1 = 1;
+                        l2=l3=l4=3;
+                    }if(check1 == 14){
+                        l1 = 1;
+                        l2=l3=l4=4;
+                    }if(check1 == 23){
+                        l1 = 2;
+                        l2=l3=l4=3;;
+                    }if(check1 == 24){
+                        l1 = 2;
+                        l2=l3=l4=4;
+                    }if(check1 == 34){
+                        l1 = 3;
+                        l2=l3=l4=4;;
+                    }
+                    if(check1 == 1234){
+                        l1=1;l2=2;l3=3;l4=4;
+                    }
+                }
+
+                listKhachSan = mSelectAll.getListKhachSanLoc(min[0],max[0],h1,h2,h3,h4,h5,l1,l2,l3,l4);
                 mAdapterListKhachSanChinh.setDataListChinh(listKhachSan);
                 mAdapterKhachSanj.setData(listKhachSan);
                 recyclerviewListChinh.setAdapter(mAdapterListKhachSanChinh);
@@ -277,5 +388,6 @@ public class HomeFragment extends Fragment implements AdapterLoaiKhachSanj.Updat
             }
         });
         dialog.show();
+
     }
 }

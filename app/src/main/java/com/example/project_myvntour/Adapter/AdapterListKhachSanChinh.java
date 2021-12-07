@@ -30,8 +30,6 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
     private List<KhachSan> listTemp;
     private NumberFormat fm = new DecimalFormat("#,###");
 
-
-
     public interface Listernaer{
         public void onClickListChinh(View v , int position);
     }
@@ -61,13 +59,14 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
                 holder.ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listPhot.get(0) , 0 , listPhot.get(0).length));
             }
             holder.tvTenKhachSan.setText(khach.getTenKhachSan());
-            holder.tvSoTien.setText("Chỉ Từ "+khach.getGiaThue());
+            holder.tvSoTien.setText("Chỉ Từ "+fm.format(Integer.parseInt(khach.getGiaThue()))+" VND");
             holder.tvSoPhongBathRoom.setText(khach.getSoLUongPHongTam() + " BathRoom");
             holder.tvSoPhongBedRoom.setText(khach.getSoLuongPHong() + " BedRoom");
             holder.itemView.setOnClickListener(v->{
                 mListerner.onClickListChinh(v , position);
             });
         }
+
     }
 
     @Override

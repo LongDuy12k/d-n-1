@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityMaintain.CSBMatActivity"
+    android:orientation="vertical">
+    <include layout="@layout/tool_bar7"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_margin="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/logomyvntour"/>
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ĐIỀU KHOẢN VÀ ĐIỀU KIỆN"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_marginLeft="75dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Công ty Cổ phần Du lịch Việt Nam VNTravel (“Chúng Tôi” hoặc “VNTravel”) thực hiện việc cung cấp Dịch Vụ thông qua Sàn Thương Mại Điện Tử (“Sàn TMĐT”). Bằng cách cài đặt, đăng nhập, truy cập và sử dụng Sàn TMĐT, người sử dụng Dịch Vụ (“Bạn” hoặc “Người Dùng”) đồng ý với các Điều Khoản và Điều Kiện này, các chính sách liên quan tới Sản Phẩm của Nhà Cung Cấp và các chính sách khác được thông báo trên Sàn TMĐT tại từng thời điểm.
+Chúng Tôi có thể sửa đổi, bổ sung, loại bỏ một số nội dung của Điều Khoản Và Điều Kiện này vào bất kỳ thời điểm nào mà không cần thông báo trước. Bằng việc tiếp tục đăng nhập, truy cập và sử dụng Sàn TMĐT, sử dụng Dịch Vụ của Chúng Tôi, Bạn đồng ý và chấp thuận với những nội dung thay đổi đó.
+Nếu Bạn sử dụng Dịch Vụ trên Sàn TMĐT để đặt Sản Phẩm cho cá nhân/ tổ chức khác mà Bạn được ủy quyền hợp pháp để thực hiện yêu cầu (“Người Tiêu Dùng Cuối Cùng”), Bạn có nghĩa vụ thông báo các Điều khoản và Điều Kiện này cho Người Tiêu Dùng Cuối Cùng."
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="1. Phạm vi thu thập thông tin"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="1. Phạm vi thu thập thông tin Khi có sự đồng ý của bạn , Chúng Tôi sẽ thu thập các thông tin để phục vụ cho mục đích đặt vé máy bay , phòng khách sạn , mua vé tàu , vé xe , đặt mua các mặt hàng lương thực , thực phẩm , đặt bàn hoặc đặt món ăn tại các nhà hàng ... ( Dịch Vụ ) , và cải thiện Trang TMĐT để nâng cao trải nghiệm của Bạn"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:text="a . Thông tin của Bạn"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="-Thông tin cá nhân của Bạn như họ tên , giới tính , ngày tháng năm sinh , email , điện thoại , địa chỉ , thông tin nhận dạng ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Chúng Tôi có thể thu thập thông tin của Bạn trong quá trình Bạn sử dụng Sàn TMĐT như : sản phẩm , dịch vụ mà Bạn đã xem hoặc đặt mua , thời gian sử dụng sản phẩm dịch vụ , lịch trình chuyến đi , sở thích mà Bạn đã chia sẻ ... Chúng Tôi cũng thu thập thông tin đánh giá của Bạn về nhà cung cấp bao gồm nội dung đánh giá và hình ảnh ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Vị trí địa lý : nhằm mục đích cung cấp thông tin về các nhà cung cấp , các sản phẩm dịch vụ ở gần Bạn , Chúng Tôi có thể thu thập thông tin về vị trí của Bạn . Nếu Bạn sử dụng các thiết bị di động khi truy cập vào Sàn TMĐT , Bạn có quyền lựa chọn để Chúng Tôi thấy vị trí hiện tại của Bạn ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Chúng Tôi sẽ lưu thông tin về các lần truy cập của Bạn ngay cả khi Bạn không tạo tài khoản trên Sàn TMĐT . Chúng Tôi sẽ thu thập các thông tin như : vị trí địa lý , địa chỉ IP , thời gian truy cập và sử dụng Sàn TMĐT . Chúng Tôi cũng thu thập thông tin nhập chuột ( click ) và những trang thông tin mà Bạn đã xem ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Chúng Tôi thu thập thông tin của Bạn khi Bạn thực hiện liên hệ với Chúng Tôi qua email , điện thoại , các kênh truyền thông khác như mạng xã hội ..."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Cookies và các công nghệ tương tự : Chúng tôi sử dụng cookies và / hoặc các công nghệ tương tự để máy tính và / hoặc thiết bị di động nhận ra Bạn khi Bạn sử dụng Sàn TMĐT của Chúng Tôi trong các lần tiếp theo . "
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:text=" b . Thông tin của người khác mà Bạn cung cấp cho Chúng Tôi"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="Bạn có thể sử dụng Sàn TMĐT để đặt mua sản phẩm , dịch vụ cho mình hoặc cho một bên thứ ba . Chúng Tôi sẽ thu thập và sử dụng thông tin của bên thứ ba do Bạn cung cấp cho Chúng Tôi . Bạn có trách nhiệm thông báo và đạt được sự chấp thuận của bên thứ ba về việc Chúng Tôi sẽ thu thập và sử dụng thông tin của họ phủ hợp với nội dung quy định tại Chính Sách này ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:text="c . Thông tin cá nhân mà Chúng Tôi thu thập được từ các nguồn khác "
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="Các sản phẩm và dịch vụ được hiển thị trên Sàn TMĐT của Chúng Tôi cũng có thể được hiển thị / tích hợp vào các trang thương mại điện tử khác của các đối tác của Chúng Tôi . Vì vậy , Chúng Tôi có thể nhận thông tin về Bạn từ các nguồn khác , bao gồm nhưng không giới hạn ở : đối tác kinh doanh , đối tác liên kết , công ty con và các bên thứ ba độc lập khác . Chúng Tôi nhận những thông tin này từ bên thứ ba để hỗ trợ cung cấp sản phẩm dịch vụ cho Ban."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" 2. Mục đích sử dụng thông tin"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="Thông tin của Bạn được Chúng Tôi thu thập và sử dụng cho các mục đích dưới đây :"
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Đăng ký và sử dụng Sàn TMĐT : Chúng tôi sử dụng thông tin Bạn cung cấp để thực hiện đăng ký tài khoản mới , xác thực thông tin tài khoản khi truy cập , sử dụng Sàn TMĐT . "
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Cung cấp sản phẩm dịch vụ theo đơn đặt hàng : Chúng Tôi thu thập thông tin người trực tiếp sử dụng dịch vụ khi Bạn đặt mua sản phẩm , dịch vụ trên Sàn TMĐT và chuyển các thông tin này cho nhà cung cấp để cung cấp đơn đặt hàng theo yêu cầu của Bạn ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Cung cấp sản phẩm dịch vụ theo đơn đặt hàng : Chúng Tôi thu thập thông tin người trực tiếp sử dụng dịch vụ khi Bạn đặt mua sản phẩm , dịch vụ trên Sàn TMĐT và chuyển các thông tin này cho nhà cung cấp để cung cấp đơn đặt hàng theo yêu cầu của Bạn ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Khi Bạn liên hệ với bộ phận chăm sóc khách hàng của Chúng Tôi , cuộc gọi của Bạn có thể được nghe trực tiếp hoặc được ghi âm phục vụ cho mục đích chăm sóc khách hàng hoặc giải quyết khiếu nại ( nếu có ) ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Cải thiện chất lượng Sàn TMĐT : Chúng Tôi sử dụng thông tin Bạn cung cấp để nâng cao trải nghiệm của Bạn khi sử dụng Sàn TMĐT của Chúng Tôi và sử dụng sản phẩm dịch vụ của nhà cung cấp ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Thực hiện hoạt động tiếp thị và nghiên cứu thị trường : Chúng Tôi sẽ giới thiệu đến Bạn thông tin về các sản phẩm dịch vụ của Chúng Tôi và / hoặc nhà cung cấp thông qua việc gửi email , gửi tin nhắn , gửi thông báo vào tài khoản của Bạn trên Sàn TMĐT . Bạn có quyền từ chối các tài liệu tiếp thị của Chúng Tôi bằng cách làm theo hướng dẫn hủy đăng ký được nêu trong tài liệu . "
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Các mục đích khác sẽ được Chúng Tôi thông báo tới Bạn tại thời điểm thu thập thông tin . "
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" 3. Chia sẻ thông tin"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Chúng Tôi chia sẻ thông tin của Bạn cho các nhà cung cấp để xử lý đơn đặt hàng của Bạn . Xin lưu ý rằng các nhà cung cấp có thể liên hệ với Bạn để thu thập thêm thông tin cần thiết cho việc cung cấp sản phẩm , dịch vụ theo đơn đặt hàng của Bạn . "
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text=" - Nhà cung cấp các dịch vụ hỗ trợ trên Sàn TMĐT của Chúng Tôi như : các công ty trung gian thanh toán , các công ty tiếp thị và nghiên cứu thị trường , các đối tác cung cấp dịch vụ chăm sóc khách hàng . Các nhà cung cấp dịch vụ hỗ trợ trên Sàn TMĐT phải bảo vệ thông tin của Bạn mà Chúng Tôi đã chia sẻ cho họ . Họ không được phép sử dụng thông tin của Bạn cho bất kỳ mục đích nào khác ngoài mục đích cung cấp dịch vụ hỗ trợ Sàn TMĐT , trừ trường hợp giữa họ và Bạn có một thỏa thuận riêng .  "
+                android:padding="10dp"
+                android:textColor="@color/black"/><TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="13dp"
+            android:text="- Các cơ quan thực thi pháp luật nhằm điều tra hành vi vi phạm pháp luật , phòng chống gian lận ."
+            android:padding="10dp"
+            android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Trường hợp chuyển nhượng doanh nghiệp : nếu Chúng Tôi thay đổi quyền sở hữu doanh nghiệp , Chúng Tôi sẽ thông báo với chủ sở hữu mới rằng họ chỉ được sử dụng thông tin của Bạn phù hợp với nội dung quy định tại Chính Sách này . "
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13dp"
+                android:text="- Tùy thuộc vào vị trí của Bạn và địa điểm sử dụng sản phẩm , dịch vụ mà Bạn đã đặt trên Sàn TMĐT , Chúng Tôi có thể sẽ chuyển thông tin của Bạn ra nước ngoài . Chúng Tôi sẽ thực hiện các biện pháp nghiệp vụ cần thiết và phù hợp để bảo vệ những thông tin này . Đồng thời , Chúng Tôi cũng yêu cầu bên thứ ba nhận dữ liệu phải áp dụng các biện pháp bảo mật cần thiết theo quy định của pháp luật ."
+                android:padding="10dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" 4. Chỉnh sửa thông tin , rút lại sự chấp thuận và yêu cầu xóa thông tin"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Nếu Bạn muốn chỉnh sửa bất kỳ thông tin cá nhân nào , vui lòng đăng nhập vào tài khoản của Bạn trên Sàn TMĐT hoặc liên hệ với bộ phận chăm sóc khách hàng của Chúng Tôi . Nếu Bạn muốn rút lại sự chấp thuận cho Chúng Tôi thu thập , sử dụng thông tin cá nhân hoặc yêu cầu Chúng Tôi xóa thông tin của Bạn , vui lòng liên hệ với bộ phận chăm sóc khách hàng của Chúng Tôi . Theo yêu cầu của Bạn , Chúng Tôi sẽ ngừng thu thập , sử dụng , tiết lộ thông tin của Bạn và xóa các thông tin mà Bạn đã chia sẻ trừ trường hợp pháp luật có yêu cầu hoặc Chúng Tôi có mục đích hợp pháp khác cần lưu giữ những thông tin này . Nếu Bạn yêu cầu rút lại sự chấp thuận với việc thu thập , sử dụng , tiết lộ thông tin cá nhân hoặc yêu cầu xóa thông tin cá nhân , Bạn sẽ không thể tiếp tục sử dụng Sàn TMĐT và Chúng Tôi và / hoặc Nhà Cung Cấp sẽ không thể cung cấp sản phẩm , dịch vụ theo yêu cầu của Bạn . Chúng Tôi không chịu trách nhiệm về bất kỳ tổn thất , thiệt hại nào với sự chấm dứt này ."
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" 5. Thời gian lưu giữ thông tin"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Chúng tôi sẽ lưu giữ thông tin của Bạn trong thời gian cần thiết để Nếu Bạn muốn chỉnh sửa bất kỳ thông tin cá nhân nào , vui lòng đăng nhập vào tài khoản của Bạn trên Sàn TMĐT hoặc liên hệ với bộ phận chăm sóc khách hàng của Chúng Tôi . Nếu Bạn muốn rút lại sự chấp thuận cho Chúng Tôi thu thập , sử dụng thông tin cá nhân hoặc yêu cầu Chúng Tôi xóa thông tin của Bạn , vui lòng liên hệ với bộ phận chăm sóc khách hàng của Chúng Tôi . Theo yêu cầu của Bạn , Chúng Tôi sẽ ngừng thu thập , sử dụng , tiết lộ thông tin của Bạn và xóa các thông tin mà Bạn đã chia sẻ trừ trường hợp pháp luật có yêu cầu hoặc Chúng Tôi có mục đích hợp pháp khác cần lưu giữ những thông tin này . Nếu Bạn yêu cầu rút lại sự chấp thuận với việc thu thập , sử dụng , tiết lộ thông tin cá nhân hoặc yêu cầu xóa thông tin cá nhân , Bạn sẽ không thể tiếp tục sử dụng Sàn TMĐT và Chúng Tôi và / hoặc Nhà Cung Cấp sẽ không thể cung cấp sản phẩm , dịch vụ theo yêu cầu của Bạn . Chúng Tôi không chịu trách nhiệm về bất kỳ tổn thất , thiệt hại nào với sự chấm dứt này ."
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text=" 6. Bảo vệ thông tin"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Chúng Tôi sẽ bảo vệ thông tin của Bạn bằng cách thực hiện các biện pháp bảo mật cần thiết và hợp lý bao gồm các quy trình vật lý , kỹ thuật và tổ chức , để ngăn chặn các hành vi truy cập , thu thập , sử dụng , tiết lộ , sao chép , sửa đổi , xử lý thông tin trái phép hoặc các rủi ro tương tự . Nếu có bất kỳ hành vi nào vi phạm thông tin cá nhân của Bạn , Chúng Tôi sẽ thông báo cho Bạn . Đồng thời , Chúng Tôi sẽ nỗ lực để phục hồi tính bảo mật của thông tin cá nhân mà Bạn đã chia sẻ trên Sàn TMĐT . Nếu Bạn có bất kỳ câu hỏi hoặc yêu cầu nào liên quan đến Chính Sách này , vui lòng liên hệ với bộ phận chăm sóc khách hàng của Chúng Tôi ."
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

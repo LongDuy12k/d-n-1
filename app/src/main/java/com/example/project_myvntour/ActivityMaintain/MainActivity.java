@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.itemSettings:
-
+                startActivity(new Intent(this,SettingActivity.class));
                 break;
             case R.id.itemHelp:
                 startActivity(new Intent(this,RevenuaActivity.class));

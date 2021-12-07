@@ -398,7 +398,7 @@ public class SelectAll {
         }
         return list;
     }
-    public List<KhachSan> getListKhachSanLoc(int min, int max) {
+    public List<KhachSan> getListKhachSanLoc(int min, int max, int h1,int h2,int h3,int h4,int h5,int l1,int l2, int l3, int l4) {
         List<KhachSan> list = new ArrayList<KhachSan>();
         try {
             if(connection !=null){
@@ -409,7 +409,8 @@ public class SelectAll {
                         "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                         "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                         "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
-                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where GiaDD between "+min+" and "+max+"";
+                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where (GiaDD between "+min+" and "+max+") and " +
+                        "(hang = "+h1+" or hang = "+h2+" or hang = "+h3+" or hang = "+h4+" or hang ="+h5+") and (KHACHSAN.MaLH = "+l1+" or KHACHSAN.MaLH = "+l2+" or KHACHSAN.MaLH = "+l3+" or KHACHSAN.MaLH = "+l4+")";
 
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(sql);

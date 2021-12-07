@@ -64,6 +64,9 @@ public class Profile_Activity extends AppCompatActivity {
         });
         String name = LoginActivity.userName;
         tvTen.setText(name);
+        if(selectAll.anhKH(name) == null){
+            return;
+        }
         imgAnh.setImageBitmap(BitmapFactory.decodeByteArray(selectAll.anhKH(name),0,selectAll.anhKH(name).length));
         itemPhone.setOnClickListener(v ->{
             String phone = tvPhone.getText().toString();

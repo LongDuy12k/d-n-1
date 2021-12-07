@@ -19,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
         <activity
+            android:name=".ActivityMaintain.VeMyVnTourActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMaintain.CSBMatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMaintain.SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityMaintain.Profile_Activity"
             android:exported="false" />
         <activity
@@ -63,7 +72,11 @@
         <activity
             android:name=".ActivityMaintain.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen" >
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
+        <activity
+            android:name=".ActivityMaintain.HomePageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,14 +84,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityMaintain.HomePageActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
-        <activity
             android:name=".ActivityMaintain.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
