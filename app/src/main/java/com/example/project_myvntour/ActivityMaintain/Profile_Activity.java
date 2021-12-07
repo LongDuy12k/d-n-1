@@ -85,6 +85,12 @@ public class Profile_Activity extends AppCompatActivity {
                 }
             });
         });
+        itemVntour.setOnClickListener(v -> {
+            startActivity(new Intent(this,VeMyVnTourActivity.class));
+        });
+        itemCs.setOnClickListener(v -> {
+            startActivity(new Intent(this,CSBMatActivity.class));
+        });
 
     }
 }

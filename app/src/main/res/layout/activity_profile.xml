@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ActivityMaintain.Profile_Activity">
-    <include layout="@layout/tool_bar4"/>
+    <include layout="@layout/tool_bar7"/>
 
     <LinearLayout
         android:layout_width="match_parent"
