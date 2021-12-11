@@ -6,7 +6,6 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.example.project_myvntour.Mode.HoaDon;
 import com.example.project_myvntour.Mode.KhachHang;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.Mode.LoaiKhachSanj;
@@ -55,10 +54,10 @@ public class SelectAll {
         try {
             if(connection !=null){
                 String sql = "\n" +
-                        "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                        "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                         "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                        " CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                        "\n" +
+                        "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                        "CHECKTT.TrangThai\n" +
                         "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                         "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                         "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
@@ -89,11 +88,11 @@ public class SelectAll {
                     ks.setNhaHang(rs.getInt("NhaHang"));
                     ks.setBar(rs.getInt("Bar"));
                     ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
-                  //  ks.setAnhchukhachsan(rs.getBytes("Anh"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
+                    ks.setAnhchukhachsan(rs.getBytes("Anh"));
                     ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
                     ks.setTenChuKhachSan(rs.getString("Ten"));
-                   // ks.setTrangThaiLuu(rs.getInt("TrangThai"));
+                    ks.setTrangThaiLuu(rs.getInt("TrangThai"));
                     list.add(ks);
                 }
             }
@@ -137,40 +136,40 @@ public class SelectAll {
         try {
             if(connection !=null){
                 if(id == 1){
-                    sql = "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                    sql = "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                             "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                            " CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                            "\n" +
+                            "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                            "CHECKTT.TrangThai\n" +
                             "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                             "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                             "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
                             "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS\n" +
                             "where LOAIHINH.TenLh like 'Hotel' ";
                 }else if(id == 2){
-                    sql = "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                    sql = "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                             "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                            "  CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                            "\n" +
+                            "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                            "CHECKTT.TrangThai\n" +
                             "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                             "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                             "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
                             "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS\n" +
                             "where LOAIHINH.TenLh like 'Vila' ";
                 }else if(id == 3) {
-                    sql = "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                    sql = "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                             "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                            " CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                            "\n" +
+                            "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                            "CHECKTT.TrangThai\n" +
                             "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                             "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                             "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
                             "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS\n" +
                             "where LOAIHINH.TenLh like 'Resort' ";
                 }else if(id == 4){
-                    sql = "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                    sql = "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                             "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                            " CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                            "\n" +
+                            "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                            "CHECKTT.TrangThai\n" +
                             "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                             "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                             "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
@@ -203,11 +202,11 @@ public class SelectAll {
                     ks.setNhaHang(rs.getInt("NhaHang"));
                     ks.setBar(rs.getInt("Bar"));
                     ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
-                  //  ks.setAnhchukhachsan(rs.getBytes("Anh"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
+                    ks.setAnhchukhachsan(rs.getBytes("Anh"));
                     ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
                     ks.setTenChuKhachSan(rs.getString("Ten"));
-                   // ks.setTrangThaiLuu(rs.getInt("TrangThai"));
+                    ks.setTrangThaiLuu(rs.getInt("TrangThai"));
                     list.add(ks);
                 }
             }
@@ -347,67 +346,19 @@ public class SelectAll {
         return false;
     }
 
-    public Phong getPHongById(int id_phong) {
-        Phong phong = new Phong();
-        try {
-            if(connection!=null){
-                String sql ="select * from TIENNGHIPHONG where TIENNGHIPHONG.MaPhong =" + id_phong;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                    phong.setDieuhoa(rs.getInt(3));
-                    phong.setTivi(rs.getInt(4));
-                    phong.setKetantoan(rs.getInt(5));
-                    phong.setTulanh(rs.getInt(6));
-                    phong.setBep(rs.getInt(7));
-                    phong.setBan(rs.getInt(8));
-                    phong.setWifi(rs.getInt(9));
-                    phong.setDichvuphong(rs.getInt(10));
-                    phong.setMaygiat(rs.getInt(11));
-                    phong.setMaysaytoc(rs.getInt(12));
-                    phong.setBanui(rs.getInt(13));
-                    phong.setKhonghutthuoc(rs.getInt(14));
-                    phong.setBontam(rs.getInt(15));
-                }
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return phong;
-    }
-
-    public byte[] anhKH(String name) {
-        byte[] anh = null;
-        try {
-            if(connection!=null){
-                String sql ="select KHACHHANG.Anh from KHACHHANG where KHACHHANG.UserName like '"+name+"'" ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                    anh = rs.getBytes(1);
-                }
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return anh;
-    }
-
-    public List<KhachSan> listTK(String toString) {
+    public List<KhachSan> listTK(String tk){
         List<KhachSan> list = new ArrayList<KhachSan>();
         try {
             if(connection !=null){
                 String sql = "\n" +
-                        "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                        "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                         "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                        " CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                        "\n" +
+                        "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                        "CHECKTT.TrangThai\n" +
                         "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                         "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                         "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
-                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where KHACHSAN.TenKS like '%"+toString+"%'";
+                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where KHACHSAN.TenKS like '%"+tk+"%'";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(sql);
                 while(rs.next()) {
@@ -434,11 +385,11 @@ public class SelectAll {
                     ks.setNhaHang(rs.getInt("NhaHang"));
                     ks.setBar(rs.getInt("Bar"));
                     ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
-                 //   ks.setAnhchukhachsan(rs.getBytes("Anh"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
+                    ks.setAnhchukhachsan(rs.getBytes("Anh"));
                     ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
                     ks.setTenChuKhachSan(rs.getString("Ten"));
-                    //ks.setTrangThaiLuu(rs.getInt("TrangThai"));
+                    ks.setTrangThaiLuu(rs.getInt("TrangThai"));
                     list.add(ks);
                 }
             }
@@ -447,19 +398,19 @@ public class SelectAll {
         }
         return list;
     }
-
-    public List<KhachSan> getListKhachSanLoc(int i, int max) {
+    public List<KhachSan> getListKhachSanLoc(int min, int max, int h1,int h2,int h3,int h4,int h5,int l1,int l2, int l3, int l4) {
         List<KhachSan> list = new ArrayList<KhachSan>();
         try {
             if(connection !=null){
-                String sql = "select DISTINCT KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
+                String sql = "select KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
                         "TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                        " CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                        "\n" +
+                        "CHUKHACHSAN.Anh , CHUKHACHSAN.SDT , CHUKHACHSAN.Ten,\n" +
+                        "CHECKTT.TrangThai\n" +
                         "from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
                         "join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
                         "join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
-                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where GiaDD between "+i+" and "+max+"";
+                        "join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS where (GiaDD between "+min+" and "+max+") and " +
+                        "(hang = "+h1+" or hang = "+h2+" or hang = "+h3+" or hang = "+h4+" or hang ="+h5+") and (KHACHSAN.MaLH = "+l1+" or KHACHSAN.MaLH = "+l2+" or KHACHSAN.MaLH = "+l3+" or KHACHSAN.MaLH = "+l4+")";
 
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(sql);
@@ -487,11 +438,11 @@ public class SelectAll {
                     ks.setNhaHang(rs.getInt("NhaHang"));
                     ks.setBar(rs.getInt("Bar"));
                     ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
-                 //   ks.setAnhchukhachsan(rs.getBytes("Anh"));
+                    ks.setGiaThue(rs.getString("GiaDD"));
+                    ks.setAnhchukhachsan(rs.getBytes("Anh"));
                     ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
                     ks.setTenChuKhachSan(rs.getString("Ten"));
-                 //   ks.setTrangThaiLuu(rs.getInt("TrangThai"));
+                    ks.setTrangThaiLuu(rs.getInt("TrangThai"));
                     list.add(ks);
                 }
             }
@@ -501,368 +452,20 @@ public class SelectAll {
         return list;
     }
 
-    public KhachHang getKhacHang(String username) {
-        KhachHang khacHang = new KhachHang();
+    public byte[] anhKH(String user){
+        byte[] anh = null;
         try {
-            if(connection!=null){
-                String sql ="select * from KHACHHANG where KHACHHANG.UserName like '"+username+"'";
+            if(connection!= null){
+                String sql = "select Anh from KHACHHANG where UserName = '"+user+"'";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    khacHang.setId(rs.getInt(1));
-                    khacHang.setEmail(rs.getString(2));
-                    khacHang.setUsername(rs.getString(3));
-                    khacHang.setPassword(rs.getString(4));
-                    khacHang.setAnhKhachHang(rs.getBytes(5));
-                    khacHang.setDiachir(rs.getString(6));
-                    khacHang.setSdt(rs.getString(7));
-                    khacHang.setGioitinh(rs.getInt(8));
-                    khacHang.setCmnd(rs.getString(9));
-                    khacHang.setIsAdmin(rs.getInt(10));
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return khacHang;
-    }
-
-    public KhachSan getGetKhachSanByIdPhong(int id_phong) {
-        KhachSan khacHang = new KhachSan();
-        try {
-            if(connection!=null){
-                String sql ="select * from KHACHSAN where KHACHSAN.MaKS = " + id_phong;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    khacHang.setId(rs.getInt(1));
-                    khacHang.setIdLoai(rs.getInt(2));
-                    khacHang.setTenKhachSan(rs.getString(3));
-                    khacHang.setSoSao(rs.getInt(4));
-                    khacHang.setTimeNhan(rs.getString(9));
-                    khacHang.setTimetra(rs.getString(10));
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return khacHang;
-    }
-
-    public Phong getPHongByIdVer1(int maphongng) {
-        Phong khacHang = new Phong();
-        try {
-            if(connection!=null){
-                String sql ="select * from PHONG where PHONG.MaPhong = " + maphongng;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    khacHang.setTenPhong(rs.getString(3));
-                   khacHang.setGia(rs.getInt(6));
-                   khacHang.setNguoiLon(rs.getInt(8));
-                   khacHang.setTreNho(rs.getInt(9));
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return khacHang;
-    }
-
-    public void insertPhieuThue(int parseInt, int parseInt1, int i, String datenow, String dateTomorrow, String hoten, String sdt, String email, String yeucaudacbiet) {
-
-        try {
-            if(connection!=null){
-                String sql ="insert into PHIEUTHUEPHONG(MaKH , MaPhong , SoNguoiThue , NgayDen , NgayDi , HoTen , SDT , Email , YeuCauDB) values (\n" +
-                        ""+parseInt+" ,"+parseInt1+" ,"+i+" , '"+datenow+"' , '"+dateTomorrow+"' , N'"+hoten+"' , '"+sdt+"' , N'"+email+"' , N'"+yeucaudacbiet+"'\n" +
-                        ")\n" ;
-                Statement st = connection.createStatement();
-                st.execute(sql);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public int getIdUser(String userName) {
-        int id = 0;
-        try {
-            if(connection!=null){
-                String sql ="select * from KHACHHANG where KHACHHANG.UserName like '"+userName+"' " ;
-                Statement st = connection.createStatement();
-               ResultSet rs = st.executeQuery(sql);
-               while (rs.next()) {
-                   id = rs.getInt(1);
-               }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return id;
-
-    }
-
-    public List<HoaDon> getListHoaDaon(int idUsername) {
-        List<HoaDon> list = new ArrayList<>();
-        try {
-            if(connection!=null){
-                String sql ="select PHIEUTHUEPHONG.MaPT , PHIEUTHUEPHONG.MaPhong ,SoNguoiThue  ,NgayDen , NgayDi , HoTen ,\n" +
-                        "PHIEUTHUEPHONG.SDT , PHIEUTHUEPHONG.Email , YeuCauDB , \n" +
-                        "KHACHSAN.TimeDat , KHACHSAN.TimeTra , PHONG.SoGiuong ,PHONG.TenPhong , KHACHSAN.TenKS , PHONG.Gia ,KHACHSAN.MaKS\n" +
-                        "\n" +
-                        "from PHIEUTHUEPHONG \n" +
-                        "join PHONG on PHONG.MaPhong = PHIEUTHUEPHONG.MaPhong\n" +
-                        "join KHACHSAN on KHACHSAN.MaKS  = PHONG.MaKS\n" +
-                        "join KHACHHANG on KHACHHANG.MaKH = PHIEUTHUEPHONG.MaKH\n" +
-                        "where KHACHHANG.MaKH = "+idUsername ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                  HoaDon hoa = new HoaDon();
-                    hoa.setId(rs.getInt(1));
-                    hoa.setMaPhong(rs.getInt(16));
-                    hoa.setSoNguoiLon(rs.getInt(3));
-                    hoa.setNgayden(rs.getString(4));
-                    hoa.setNgaydi(rs.getString(5));
-                    hoa.setTennguoidat(rs.getString(6));
-                    hoa.setSodienthoai(rs.getString(7));
-                    hoa.setEmail(rs.getString(8));
-                    hoa.setYeuCauDB(rs.getString(9));
-                    hoa.setGionhanphong(rs.getString(10));
-                    hoa.setGiotraphong(rs.getString(11));
-                    hoa.setSoGiuong(rs.getInt(12));
-                    hoa.setTenPhong(rs.getString(13));
-                    hoa.setTenKhachSan(rs.getString(14));
-                    hoa.setTongtien(rs.getInt(15));
-                  list.add(hoa);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    public List<byte[]> getPhotBIdPhong(int maPhong) {
-        List<byte[]> list = new ArrayList<byte[]>();
-        try {
-            if(connection!=null){
-                String sql ="select * from HINHANHPHONG where HINHANHPHONG.MaPhong =" + maPhong ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while(rs.next()){
-                    list.add(rs.getBytes(3))  ;
-                }
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return list;
-    }
-    public void insertCheck(int idKhachSanj , int idKhachHang ){
-        try {
-            String sql = "insert into  CHECKTT (MaKS , MaKH, TrangThai ) values ( "+idKhachSanj+" , "+idKhachHang+", 1)";
-            Statement st = connection.createStatement();
-            st.executeUpdate(sql);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-    public void deleteFromTranThaiLuu(int idKhachSanj , int idKhachHang  ){
-        try {
-            String sql = "delete from CHECKTT where CHECKTT.MaKH ="+idKhachHang+"   and CHECKTT.MaKS = "+idKhachSanj+" and CHECKTT.TrangThai = 1";
-            Statement st = connection.createStatement();
-            st.executeUpdate(sql);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-    public  int getTrangThaiLuu(int idKhachHang, int idKhachSanj){
-        int id = 0;
-        try {
-            if(connection!=null){
-                String sql ="select * from CHECKTT where CHECKTT.MaKH ="+idKhachHang+" and CHECKTT.MaKS = "+idKhachSanj ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    id = rs.getInt(4);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return id;
-    }
-
-    public byte[] getAnhChuKhachSan(int id) {
-        byte[] anh =null;
-        try {
-            if(connection!=null){
-                String sql ="select * from CHUKHACHSAN where CHUKHACHSAN.MaKS ="+id ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
+                while (rs.next()){
                     anh = rs.getBytes("Anh");
                 }
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-        return  anh;
-    }
-    public void insertCheck2(int idKhachSanj , int idKhachHang ){
-        try {
-            String sql = "update CHECKTT set CHECKTT.MaKH = "+idKhachHang+"  , CHECKTT.MaKS ="+idKhachSanj+" ,CHECKTT.TrangThai = 1";
-            Statement st = connection.createStatement();
-            st.executeUpdate(sql);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public List<KhachSan> getListKhachSanDaLuu(int id) {
-        List<KhachSan> list = new ArrayList<KhachSan>();
-        try {
-            if(connection !=null){
-                String sql = "\n" +
-                        "\n" +
-                        "select  KHACHSAN.MaKS , TenKS ,Hang , ChinhSachVS , DiaDiem ,Longitude ,Latitude,TimeDat,TimeTra ,SoLuongP ,MoTa ,LOAIHINH.TenLH,GiaDD,\n" +
-                        "                        TIENNGHIHD.WifiSanh,WifiPhong,BeBoi,DauXe,Spa,VatNuoi,DieuHoa,NhaHang,Bar,Gym ,\n" +
-                        "                        CHUKHACHSAN.SDT , CHUKHACHSAN.Ten\n" +
-                        "                        \n" +
-                        "                        from KHACHSAN join LOAIHINH on LOAIHINH.MaLH = KHACHSAN.MaLH\n" +
-                        "                        join TIENNGHIHD on TIENNGHIHD.MaKS = KHACHSAN.MaKS\n" +
-                        "                        join CHUKHACHSAN on CHUKHACHSAN.MaKS = KHACHSAN.MaKS\n" +
-                        "                        join CHECKTT on CHECKTT.MaKS = KHACHSAN.MaKS\n" +
-                        "\n" +
-                        "\t\t\t\t\t\twhere CHECKTT.TrangThai =1 and CHECKTT.MaKH = "+id;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while(rs.next()) {
-                    KhachSan ks = new KhachSan();
-                    ks.setId(rs.getInt("MaKS"));
-                    ks.setTenKhachSan(rs.getString("TenKS"));
-                    ks.setSoSao(rs.getInt("Hang"));
-                    ks.setChinhsachveSinh(String.valueOf(rs.getInt("ChinhSachVS")));
-                    ks.setDiaDiem(rs.getString("DiaDiem"));
-                    ks.setKinhdo(rs.getDouble("Latitude"));
-                    ks.setVido(rs.getDouble("Longitude"));
-                    ks.setTimeNhan(rs.getString("TimeDat"));
-                    ks.setTimetra(rs.getString("TimeTra"));
-                    ks.setSoLuongPHong(rs.getInt("SoLuongP"));
-                    ks.setMota(rs.getString("MoTa"));
-                    ks.setLoaisachsan(rs.getString("TenLH"));
-                    ks.setWifiSanh(rs.getInt("WifiSanh"));
-                    ks.setWifiPhong(rs.getInt("WifiPhong"));
-                    ks.setBeBoi(rs.getInt("BeBoi"));
-                    ks.setDauXe(rs.getInt("DauXe"));
-                    ks.setSpa(rs.getInt("Spa"));
-                    ks.setVatNuoi(rs.getInt("VatNuoi"));
-                    ks.setDieuHoa(rs.getInt("DieuHoa"));
-                    ks.setNhaHang(rs.getInt("NhaHang"));
-                    ks.setBar(rs.getInt("Bar"));
-                    ks.setGym(rs.getInt("Gym"));
-                    ks.setGiaThue(rs.getInt("GiaDD"));
-                    //  ks.setAnhchukhachsan(rs.getBytes("Anh"));
-                    ks.setSoDienThoaiChuKhachSan(rs.getString("SDT"));
-                    ks.setTenChuKhachSan(rs.getString("Ten"));
-                    // ks.setTrangThaiLuu(rs.getInt("TrangThai"));
-                    list.add(ks);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    public void updateSOluongPHong(int id, int i) {
-        try {
-            String sql = "update PHONG set PHONG.SoPhong ="+i+" where PHONG.MaPhong = "+id;
-            Statement st = connection.createStatement();
-            st.executeUpdate(sql);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public int getSoLuongPhongkhachSan(int id) {
-        int idt = 0;
-        try {
-            if(connection!=null){
-                String sql ="select * from KHACHSAN where KHACHSAN.MaKS = "+id ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    idt = rs.getInt(11);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return idt;
-    }
-
-    public void updateSOluongPHongKhachSan(int id, int i) {
-        try {
-            String sql = "update KHACHSAN set KHACHSAN.SoLuongP = "+i+" where KHACHSAN.MaKS = "+id;
-            Statement st = connection.createStatement();
-            st.executeUpdate(sql);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void deleteHoaDon(int id) {
-        try {
-            String sql = "delete from PHIEUTHUEPHONG where PHIEUTHUEPHONG.MaPT = "+id;
-            Statement st = connection.createStatement();
-            st.execute(sql);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public int getIdByTenPhong(String tenPhong) {
-        int id = 0;
-        try {
-            if(connection!=null){
-                String sql ="select * from PHONG where PHONG.TenPhong like N'"+tenPhong+"'" ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    id = rs.getInt(1);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return id;
-    }
-    public int getSoluongPHongByByName(String tenPhong) {
-        int id = 0;
-        try {
-            if(connection!=null){
-                String sql ="select * from PHONG where PHONG.TenPhong like N'"+tenPhong+"'" ;
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery(sql);
-                while (rs.next()) {
-                    id = rs.getInt(4);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return id;
+        return anh;
     }
 }

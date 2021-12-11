@@ -13,22 +13,23 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/unnamed"
+        android:icon="@drawable/logoapp"
         android:label="@string/app_name"
-        android:requestLegacyExternalStorage="true"
-        android:roundIcon="@drawable/unnamed"
+        android:roundIcon="@drawable/logoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
-        <activity android:name=".ActivityMaintain.HoaDonChiTietActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.Ver2"
-            >
-
-
-        </activity>
-        <activity android:name=".ActivityMaintain.BookMartActivity" />
-        <activity android:name=".ActivityMaintain.HoaDonActivity" />
-        <activity android:name=".ActivityMaintain.HoanTatDatActivity" />
+        <activity
+            android:name=".ActivityMaintain.VeMyVnTourActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMaintain.CSBMatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMaintain.SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityMaintain.Profile_Activity"
+            android:exported="false" />
         <activity
             android:name=".ActivityMaintain.RevenuaActivity"
             android:exported="true" />
@@ -43,7 +44,6 @@
         <activity android:name=".ActivityMaintain.ServiceFacilitiesActivity" />
         <activity android:name=".ActivityMaintain.BestForYouActivity" />
         <activity android:name=".ActivityMaintain.NearFromYouActivity2" />
-        <activity android:name=".ActivityMaintain.ImagePhongActivity" />
         <activity
             android:name=".ActivityMaintain.SplashScreenActivity"
             android:exported="true"
@@ -65,15 +65,16 @@
             android:name=".ActivityMaintain.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".ActivityMaintain.InFoKhachSanActivity" />
-        <activity android:name=".ActivityMaintain.BookNowActivity" />
-        <activity android:name=".ActivityMaintain.InfoRoomActivity" />
-        <activity android:name=".ActivityMaintain.Profile_Activity" />
         <activity
             android:name=".ActivityMaintain.SigninActivity"
             android:exported="true"
             android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
         <activity
             android:name=".ActivityMaintain.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
+        <activity
+            android:name=".ActivityMaintain.HomePageActivity"
             android:exported="true"
             android:theme="@style/Theme.Project_MyVnTour.FullScreen">
             <intent-filter>
@@ -82,10 +83,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActivityMaintain.HomePageActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
         <activity
             android:name=".ActivityMaintain.MainActivity"
             android:exported="true" />
