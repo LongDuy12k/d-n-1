@@ -133,6 +133,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/tvSoDem"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,8 +149,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/btnChonNgayTra"
         android:layout_weight="1"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -672,6 +673,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/tvSoPhong_SoDem"
                         android:layout_weight="1"
                         android:textColor="@color/black"
                         android:layout_width="wrap_content"
@@ -760,7 +762,7 @@
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
             android:textAllCaps="false"
-            android:text="Tiếp Tục"
+            android:text="Bước cuối cùng"
             android:layout_alignParentRight="true"
             app:backgroundTint="@null"
             android:layout_width="wrap_content"

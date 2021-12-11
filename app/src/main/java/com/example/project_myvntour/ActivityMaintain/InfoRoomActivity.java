@@ -155,7 +155,11 @@ public class InfoRoomActivity extends AppCompatActivity implements AdapterSidePh
         imateside.setScrollTimeInSec(4); //set scroll delay in seconds :
         imateside.startAutoCycle();
 
-
+        btnThem.setOnClickListener(v->{
+            Intent i = new Intent(InfoRoomActivity.this, BookNowActivity.class);
+            i.putExtra("phong" , phong1);
+            startActivity(i);
+        });
         shodata();
     }
 

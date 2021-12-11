@@ -67,7 +67,7 @@ public class AdapterKhachSanj extends RecyclerView.Adapter<AdapterKhachSanj.View
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return  list.size() < 10 ? list.size() :10;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

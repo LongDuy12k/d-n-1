@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_myvntour.ActivityMaintain.LoginActivity;
 import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
@@ -46,6 +47,7 @@ public class AdapterItemKhachSanMap extends RecyclerView.Adapter<AdapterItemKhac
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         KhachSan khacsan = list.get(position);
+        int trangThaiLuu = mSelectAll.getTrangThaiLuu(LoginActivity.id , khacsan.getId());
         if(khacsan != null){
             List<byte[]> listphot = mSelectAll.getListPhotoById(khacsan.getId());
             if(listphot.size() >=1 ){// doạn này lên check phòng trường hợp không lấy đc anh
@@ -71,7 +73,7 @@ public class AdapterItemKhachSanMap extends RecyclerView.Adapter<AdapterItemKhac
             }else if(khacsan.getSoSao()==4){
                 holder.imsao5.setVisibility(View.INVISIBLE);
             }
-            if(khacsan.getTrangThaiLuu() == 1){
+            if(trangThaiLuu == 1){
                 holder.imgSaveLocation.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
             }else{
 
@@ -82,11 +84,13 @@ public class AdapterItemKhachSanMap extends RecyclerView.Adapter<AdapterItemKhac
                 if (khacsan.getTrangThaiLuu() == 0) {
                     khacsan.setTrangThaiLuu(1);
                     holder.imgSaveLocation.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
+                    mSelectAll.insertCheck(khacsan.getId() , LoginActivity.id  );
                     holder.imgSaveLocation.setSelected(true);
 
                 }else if(khacsan.getTrangThaiLuu() == 1){
                     khacsan.setTrangThaiLuu(0);
                     holder.imgSaveLocation.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24);
+                    mSelectAll.deleteFromTranThaiLuu(khacsan.getId() , LoginActivity.id  );
                     holder.imgSaveLocation.setSelected(false);
                 }
             });

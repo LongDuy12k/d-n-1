@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Description"/>
+            android:text="Mô tả"/>
         <LinearLayout
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -171,7 +171,7 @@
             app:readMoreColor="@color/blue"
             android:textColor="@color/xam"
             app:readMoreMaxLine="3"
-            app:readMoreText="…Show more" />
+            app:readMoreText="…Xem Thêm" />
         <View
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Service Facilities"/>
+                android:text="Cơ sở dịch vụ"/>
             <TextView
                 android:id="@+id/tvSeeMoerTiennghi"
                 android:layout_alignParentRight="true"
@@ -197,7 +197,7 @@
                 android:textColor="@color/blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="See more"/>
+                android:text="Xem Thêm"/>
 
 
         </RelativeLayout>
@@ -227,7 +227,7 @@
                        android:layout_marginLeft="10dp"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Wifi in lobby"
+                       android:text="Wifi tại sảnh"
                        android:layout_gravity="center"/>
                </LinearLayout>
                <LinearLayout
@@ -244,7 +244,7 @@
                        android:layout_marginLeft="10dp"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Wifi in the room"
+                       android:text="Wifi trong phòng"
                        android:layout_gravity="center"/>
                </LinearLayout>
            </LinearLayout>
@@ -267,7 +267,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pool"
+                        android:text="Hồ bơi"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -307,7 +307,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Parking the car"
+                        android:text="Đậu xe"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -324,7 +324,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pet"
+                        android:text="Vật nuôi"
                         android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
@@ -347,9 +347,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Hygiene policy"/>
+                android:text="Chính sách vệ sinh"/>
             <TextView
-                android:foreground="?android:attr/selectableItemBackground"
+                android:background="?android:attr/selectableItemBackground"
                 android:layout_marginTop="20dp"
                 android:id="@+id/tvSeeMoerChinhSachVeSinh"
                 android:layout_alignParentBottom="true"
@@ -358,7 +358,7 @@
                 android:textColor="@color/blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="See more"/>
+                android:text="Xem Thêm"/>
             <TextView
                 android:id="@+id/tvChinhsSach"
                 android:layout_below="@+id/tvTieudD"
@@ -366,7 +366,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/xam"
-                android:text="This property is taking the following measures to protect the health and safety of both guests and employees"
+                android:text="
+Khách sạn này đang thực hiện các biện pháp sau đây để bảo vệ sức khỏe và sự an toàn của cả khách và nhân viên"
                 />
 
             <LinearLayout
@@ -390,7 +391,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/xam"
-                        android:text="New safety standards"
+                        android:text="
+Tiêu chuẩn an toàn mới"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -408,7 +410,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/xam"
-                        android:text="Disinfect regularly"
+                        android:text="Khử trùng thường xuyên"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -426,7 +428,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/xam"
-                        android:text="Between the safe distance"
+                        android:text="Giữa khoảng cách an toàn"
                         />
                 </LinearLayout>
                 <LinearLayout
@@ -445,7 +447,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/xam"
-                        android:text="On-site physician"
+                        android:text="Bác sĩ tại chỗ"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -520,7 +522,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Gallery"/>
+            android:text="Thư Mục Ảnh"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -537,7 +539,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Check in from : "/>
+            android:text="Nhận Phòng Từ : "/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -599,7 +601,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
+                android:text="Giá Giao Động"
                 android:textSize="12dp"
                 android:textColor="@color/xam"/>
             <TextView
@@ -619,7 +621,8 @@
             android:paddingHorizontal="24dp"
             android:paddingVertical="12dp"
             android:textAllCaps="false"
-            android:text="Rent Now"
+            android:text="
+Đặt ngay"
             android:layout_alignParentRight="true"
             app:backgroundTint="@null"
             android:layout_width="wrap_content"

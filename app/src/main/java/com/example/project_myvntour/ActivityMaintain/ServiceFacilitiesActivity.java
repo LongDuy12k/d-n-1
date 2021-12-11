@@ -46,7 +46,7 @@ public class ServiceFacilitiesActivity extends AppCompatActivity {
         setSupportActionBar(toolBar2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("ServiceFacilities");
+        getSupportActionBar().setTitle("Cơ sở dịch vụ");
         listtiennghi = (LinearLayout) findViewById(R.id.listtiennghi);
         liWifiTaiSanh = (LinearLayout) findViewById(R.id.liWifiTaiSanh);
         liWifiTaiPhong = (LinearLayout) findViewById(R.id.liWifiTaiPhong);

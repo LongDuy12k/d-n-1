@@ -28,7 +28,7 @@
             android:background="@drawable/vekhungnhap"
             android:drawableLeft="@drawable/ic_baseline_search_24"
             android:drawablePadding="10dp"
-            android:hint="Search address, or near you "
+            android:hint="Tên Khách Sạn"
             android:paddingLeft="16dp"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
@@ -64,7 +64,7 @@
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Near from you"/>
+            android:text="Gần tôi nhất"/>
         <TextView
             android:id="@+id/tvSeeMoerGanNhat"
             android:layout_alignParentRight="true"
@@ -73,7 +73,7 @@
             android:textColor="@color/xam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="See more"/>
+            android:text="Xem Thêm"/>
 
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
@@ -92,7 +92,7 @@
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Best for you"/>
+            android:text="Tốt nhất cho bạn"/>
         <TextView
             android:id="@+id/tvSeeMoreListChinh"
             android:layout_alignParentRight="true"
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:foreground="?android:attr/selectableItemBackground"
-            android:text="See more"/>
+            android:text="Xem Thêm"/>
 
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView

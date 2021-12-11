@@ -61,9 +61,9 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
                 holder.ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listPhot.get(0) , 0 , listPhot.get(0).length));
             }
             holder.tvTenKhachSan.setText(khach.getTenKhachSan());
-            holder.tvSoTien.setText("Chỉ Từ "+fm.format(khach.getGiaThue()) + "VND");
-            holder.tvSoPhongBathRoom.setText(khach.getSoLUongPHongTam() + " BathRoom");
-            holder.tvSoPhongBedRoom.setText(khach.getSoLuongPHong() + " BedRoom");
+            holder.tvSoTien.setText("Chỉ Từ "+fm.format(khach.getGiaThue()) + " VND");
+          //  holder.tvSoPhongBathRoom.setText(khach.getSoLUongPHongTam() + " BathRoom");
+            holder.tvSoPhongBedRoom.setText(khach.getSoLuongPHong() + " Phòng");
             holder.itemView.setOnClickListener(v->{
                 mListerner.onClickListChinh(v , position);
             });
@@ -72,7 +72,7 @@ public class AdapterListKhachSanChinh extends RecyclerView.Adapter<AdapterListKh
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return  list.size() < 20 ? list.size() : 20;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

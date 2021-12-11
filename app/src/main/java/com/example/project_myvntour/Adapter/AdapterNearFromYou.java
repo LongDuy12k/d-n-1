@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_myvntour.ActivityMaintain.LoginActivity;
 import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
@@ -47,6 +49,8 @@ public class AdapterNearFromYou extends RecyclerView.Adapter<AdapterNearFromYou.
     @Override
     public void onBindViewHolder(@NonNull  AdapterNearFromYou.ViewHolder holder, int position) {
         KhachSan khach =list.get(position);
+        int trangThaiLuu = mSelectAll.getTrangThaiLuu(LoginActivity.id , khach.getId());
+
         if (khach != null){
             holder.ivAnhKhachSan.setImageResource(khach.getImages());
             List<byte[]> listPhot = mSelectAll.getListPhotById(khach.getId());
@@ -76,23 +80,26 @@ public class AdapterNearFromYou extends RecyclerView.Adapter<AdapterNearFromYou.
             holder.itemView.setOnClickListener(v->{
                 mListerner.onClick(v , position);
             });
-            if(khach.getTrangThaiLuu() == 1){
-                holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
+            if(trangThaiLuu == 1){
+                holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_24_trang_full);
             }else{
-
-                holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24);
+                holder.iconLuu.setBackgroundResource(R.drawable.bookmark_trang);
             }
 
             holder.iconLuu.setOnClickListener(v->{
-                if (khach.getTrangThaiLuu() == 0) {
+                if (trangThaiLuu == 0) {
                     khach.setTrangThaiLuu(1);
                     holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_24_trang_full);
                     holder.iconLuu.setSelected(true);
+                    mSelectAll.insertCheck(khach.getId() , LoginActivity.id  );
+                    Toast.makeText(mContext, "luuu", Toast.LENGTH_SHORT).show();
 
-                }else if(khach.getTrangThaiLuu() == 1){
+                }else if(trangThaiLuu == 1){
                     khach.setTrangThaiLuu(0);
                     holder.iconLuu.setBackgroundResource(R.drawable.bookmark_trang);
                     holder.iconLuu.setSelected(false);
+                    mSelectAll.deleteFromTranThaiLuu(khach.getId() , LoginActivity.id  );
+                    Toast.makeText(mContext, "khong luu", Toast.LENGTH_SHORT).show();
                 }
             });
         }

@@ -37,7 +37,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Home"/>
+                    android:text="Trang Chủ"/>
 
 
             </LinearLayout>
@@ -62,7 +62,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile"/>
+                    android:text="Hồ Sơ"/>
 
 
             </LinearLayout>
@@ -87,7 +87,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nearby"/>
+                    android:text="Gần Tôi"/>
 
 
             </LinearLayout>
@@ -118,7 +118,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bookmark"/>
+                    android:text="Đã Lưu"/>
 
 
             </LinearLayout>
@@ -143,12 +143,11 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notification"/>
+                    android:text="Thông Báo"/>
 
 
             </LinearLayout>
             <LinearLayout
-                android:visibility="gone"
                 android:layout_marginTop="15dp"
                 android:padding="10dp"
                 android:background="@drawable/khungitemmenu"
@@ -161,7 +160,7 @@
                     android:layout_marginLeft="21dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_outline_message_24"/>
+                    android:src="@drawable/ic_outline_receipt_long_24"/>
                 <TextView
                     android:textSize="16dp"
                     android:layout_marginLeft="20dp"
@@ -169,7 +168,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Message"/>
+                    android:text="Hóa Đơn"/>
 
 
             </LinearLayout>
@@ -199,7 +198,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Setting"/>
+                    android:text="Cài Đặt"/>
 
 
             </LinearLayout>
@@ -224,7 +223,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Support"/>
+                    android:text="Hỗ trợ"/>
 
 
             </LinearLayout>
@@ -249,7 +248,7 @@
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Logout"/>
+                    android:text="Đăng Xuất"/>
 
 
             </LinearLayout>

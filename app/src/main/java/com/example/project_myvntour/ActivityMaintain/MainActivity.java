@@ -12,9 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Fragment.HomeFragment;
 import com.example.project_myvntour.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -37,6 +40,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout frameLayout;
     private DuoDrawerLayout drawerLayout;
     private MaterialToolbar toolbar;
+    private ImageView basicon;
+    MenuItem menuItem;
+
+    TextView badgeCounter;
+    // change the number to see badge in action
+    int pendingNotifications ;
+    private SelectAll mSelectAll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         itemSettings.setOnClickListener(this);
         itemHelp.setOnClickListener(this);
         itemLogout.setOnClickListener(this);
-
+        mSelectAll = new SelectAll(this);
         HomeFragment homeFragment = new HomeFragment();
         replaceFragment(homeFragment);
     }
@@ -90,13 +100,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, NearbyActivity.class));
                 break;
             case R.id.itemBookmark:
-
+                startActivity(new Intent(this,BookMartActivity.class));
                 break;
             case R.id.itemNotification:
 
                 break;
             case R.id.itemMessage:
-
+                startActivity(new Intent(this,HoaDonActivity.class));
                 break;
             case R.id.itemSettings:
 
@@ -107,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.itemLogout:
                 comFirmExit();
                 break;
+
         }
         drawerLayout.closeDrawer();
     }
@@ -114,16 +125,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.item_chuong , menu);
-        return true;
+
+        getMenuInflater().inflate(R.menu.menu_notification, menu);
+        menuItem = menu.findItem(R.id.id_chuong);
+        pendingNotifications = mSelectAll.getListHoaDaon(LoginActivity.id).size();
+        if (pendingNotifications == 0) {
+            menuItem.setActionView(null);
+        } else {
+        menuItem.setActionView(R.layout.notification_badge);
+            View view = menuItem.getActionView();
+            badgeCounter = view.findViewById(R.id.badge_counter);
+            basicon = view.findViewById(R.id.iconchuong);
+            badgeCounter.setText(String.valueOf(pendingNotifications));
+            basicon.setOnClickListener(v->{
+                startActivity(new Intent(this,HoaDonActivity.class));
+            });
+        }
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch (id){
-            case R.id.iconChuong:
-                Toast.makeText(this, "Chọn chuông", Toast.LENGTH_SHORT).show();
+        switch (item.getItemId()){
+            case R.id.id_chuong:
+
                 break;
             default:
                 break;
@@ -152,5 +178,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         moveTaskToBack(false);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        pendingNotifications = mSelectAll.getListHoaDaon(LoginActivity.id).size();
     }
 }

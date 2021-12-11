@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_myvntour.ActivityMaintain.LoginActivity;
 import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
@@ -48,6 +49,7 @@ public class AdapterBestForYou extends RecyclerView.Adapter<AdapterBestForYou.Vi
     @Override
     public void onBindViewHolder(@NonNull  AdapterBestForYou.ViewHolder holder, int position) {
         KhachSan khach =list.get(position);
+        int trangThaiLuu = mSelectAll.getTrangThaiLuu(LoginActivity.id , khach.getId());
         if (khach != null){
             holder.ivAnhKhachSan.setImageResource(khach.getImages());
             List<byte[]> listPhot = mSelectAll.getListPhotById(khach.getId());
@@ -77,8 +79,8 @@ public class AdapterBestForYou extends RecyclerView.Adapter<AdapterBestForYou.Vi
             holder.itemView.setOnClickListener(v->{
                 mListerner.onClick(v , position);
             });
-            if(khach.getTrangThaiLuu() == 1){
-                holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_24);
+            if(trangThaiLuu == 1){
+                holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_24_trang_full);
             }else{
 
                 holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24);
@@ -88,11 +90,13 @@ public class AdapterBestForYou extends RecyclerView.Adapter<AdapterBestForYou.Vi
                 if (khach.getTrangThaiLuu() == 0) {
                     khach.setTrangThaiLuu(1);
                     holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_24_trang_full);
+                    mSelectAll.insertCheck(khach.getId() , LoginActivity.id  );
                     holder.iconLuu.setSelected(true);
 
                 }else if(khach.getTrangThaiLuu() == 1){
                     khach.setTrangThaiLuu(0);
-                    holder.iconLuu.setBackgroundResource(R.drawable.bookmark_trang);
+                    holder.iconLuu.setBackgroundResource(R.drawable.ic_baseline_bookmark_border_24);
+                    mSelectAll.deleteFromTranThaiLuu(khach.getId() , LoginActivity.id  );
                     holder.iconLuu.setSelected(false);
                 }
             });

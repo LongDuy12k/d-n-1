@@ -20,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
-            android:text="Top amenities"/>
+            android:text="
+Tiện nghi hàng đầu"/>
         <LinearLayout
             android:orientation="vertical"
             android:id="@+id/listtiennghi"
@@ -46,7 +47,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wifi in lobby"
+                        android:text="
+Wifi tại sảnh"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -63,7 +65,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wifi in the room"
+                        android:text="
+Wifi trong phòng"
                         android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
@@ -86,7 +89,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pool"
+                        android:text="Hồ bơi"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -103,7 +106,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Spa"
+                        android:text="
+Spa"
                         android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
@@ -126,7 +130,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Parking the car"
+                        android:text="Đậu xe"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -143,7 +147,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pet"
+                        android:text="
+Vật nuôi"
                         android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
@@ -168,7 +173,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Air conditioning"
+                        android:text="Điều hòa nhiệt độ"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout
@@ -185,7 +190,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Restaurant"
+                        android:text="
+Quán ăn"
                         android:layout_gravity="center"/>
                 </LinearLayout>
             </LinearLayout>
@@ -209,7 +215,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bar restaurant"
+                        android:text="
+Nhà hàng quán bar"
                         android:layout_gravity="center"/>
                 </LinearLayout>
                 <LinearLayout

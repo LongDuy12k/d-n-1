@@ -46,6 +46,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.maps.android.ui.IconGenerator;
 
@@ -69,6 +71,8 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
     private MarkerOptions markerOptions;
     private CardView cvBoLoc;
     private View dongke;
+    List<LatLng> arrayLatLngDirection = new ArrayList<LatLng>();
+    Polyline polyline1;
     private CheckBox cbHouse;
     private CheckBox cbApartments;
     private CheckBox cbHotel;
@@ -105,7 +109,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
 
 
         setSupportActionBar(toolBar);
-        getSupportActionBar().setTitle("Nearby");
+        getSupportActionBar().setTitle("Gần tôi Nhất");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -183,6 +187,7 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         } else {
             Toast.makeText(getBaseContext(), "Không lấy được thông tin định vị, hãy bật GPS và bấm nút định vị trên bản đồ", Toast.LENGTH_LONG).show();
         }
+        DrawPolyline();
     }
     public void getListGanNhat(List<KhachSan> list){
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
@@ -368,6 +373,17 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
         intent.putExtra("khachsan" , khach);
         startActivity(intent);
     }
+    void DrawPolyline(){
+        if(polyline1 != null)
+            polyline1.remove();
+        PolylineOptions polylineOptions = new PolylineOptions() .clickable(true);
+        for(int i = 0; i< arrayLatLngDirection.size(); i++){
+            LatLng latLng = arrayLatLngDirection.get(i);
+            polylineOptions.add(  latLng  );
+        }
+        polylineOptions.color(R.color.purple_500);
+        polyline1 = mMap.addPolyline(polylineOptions);
 
+    }
 
 }

@@ -15,11 +15,13 @@
         android:orientation="vertical"
         android:paddingTop="15dp">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/img_anh"
-            android:layout_width="110dp"
-            android:layout_height="90dp"
-            android:src="@drawable/ic_person" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center"
+            android:id="@+id/hinhanhquanli"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/a"
+            />
         <TextView
             android:id="@+id/tv_ten"
             android:layout_width="match_parent"

@@ -28,6 +28,7 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
     private UpdateRecyclerView mUpdateRecyclerView;
    private List<KhachSan> listKhachSan;
    private SelectAll mSelectAll;
+    public static int index = 1;
     public interface UpdateRecyclerView {
         public void callbacksChanged(int position , List<KhachSan> list );
         public void callbacksChanged2(int position , List<KhachSan> list );
@@ -73,24 +74,27 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
                 listKhachSan = mSelectAll.getListKhachSanByHotel(1);
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
-
+                index = 1 ;
             }else if(position == 1) {
                 listKhachSan = new ArrayList<>();
               listKhachSan = mSelectAll.getListKhachSanByHotel(2);
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
+                index = 2 ;
             }
             else if(position == 2) {
                 listKhachSan = new ArrayList<>();
                 listKhachSan = mSelectAll.getListKhachSanByHotel(3);
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
+                index = 3 ;
             }
             else if(position == 3) {
                 listKhachSan = new ArrayList<>();
                 listKhachSan = mSelectAll.getListKhachSanByHotel(4);
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
+                index = 4 ;
             }
 
 

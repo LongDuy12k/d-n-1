@@ -99,6 +99,7 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
     Marker currentUser, searchPoint;
     LatLng currentUserLocation, searchPointLocation;
     private GoogleMap mMap;
+    MenuItem menuItem;
     private NumberFormat fm = new DecimalFormat("#,###");
     List<byte[]> listPhot;
     @Override
@@ -194,15 +195,16 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
         if(listPhot.size() >1) {
             ivAnhKhachSan.setImageBitmap(BitmapFactory.decodeByteArray(listPhot.get(0) , 0 , listPhot.get(0).length));
         }
-        hinhanhquanli.setImageBitmap(BitmapFactory.decodeByteArray(khach.getAnhchukhachsan() , 0  , khach.getAnhchukhachsan().length));
+        byte[] anhchu = mSelectAll.getAnhChuKhachSan(khach.getId());
+        hinhanhquanli.setImageBitmap(BitmapFactory.decodeByteArray(anhchu , 0  , anhchu.length));
         tenQuanLi.setText(khach.getTenChuKhachSan());
         tvDiaChi.setText(khach.getDiaDiem());
         tvTenKhachSan.setText(khach.getTenKhachSan());
-        tvSoPhongBedRoom.setText(khach.getSoLuongPHong()+" BedRoom");
+        tvSoPhongBedRoom.setText(khach.getSoLuongPHong()+" Phòng");
         tvMoto.setText(khach.getMota());
         timeNhan.setText(khach.getTimeNhan() +" - ");
         timeTra.setText(khach.getTimetra());
-        GiaMoPhong.setText(fm.format(khach.getGiaThue()) + "VND");
+        GiaMoPhong.setText(fm.format(khach.getGiaThue()) + " VND");
         if(khach.getWifiPhong() == 0){
             liWifiTaiPhong.setAlpha(0.4f);
         }
@@ -249,6 +251,13 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.itemboomak, menu);
+        menuItem = menu.findItem(R.id.iconbookmak);
+        int trangThaiLuu = mSelectAll.getTrangThaiLuu(LoginActivity.id , khach.getId());
+        if(trangThaiLuu == 1){
+            menuItem.setIcon(R.drawable.ic_baseline_bookmark_24_trang_full);
+        }else{
+            menuItem.setIcon(R.drawable.ic_baseline_bookmark_border_24_khungtranglon);
+        }
         return true;
     }
     @Override
@@ -257,9 +266,11 @@ public class InFoKhachSanActivity extends AppCompatActivity implements AdapterGa
         if(id == R.id.iconbookmak) {
             if (khach.getTrangThaiLuu() == 0) {
                 khach.setTrangThaiLuu(1);
+                mSelectAll.insertCheck(khach.getId() , LoginActivity.id  );
                 item.setIcon(R.drawable.ic_baseline_bookmark_24_trang_full);
             }else if(khach.getTrangThaiLuu() == 1){
                 khach.setTrangThaiLuu(0);
+                mSelectAll.deleteFromTranThaiLuu(khach.getId() , LoginActivity.id  );
                 item.setIcon(R.drawable.ic_baseline_bookmark_border_24_khungtranglon);
             }
             return true;

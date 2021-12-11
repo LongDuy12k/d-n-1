@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ECF0F3"
     tools:context=".ActivityMaintain.NearFromYouActivity2">
     <include layout="@layout/tool_bar4"/>
     <androidx.recyclerview.widget.RecyclerView

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.project_myvntour.Adapter.AdapterBestForYou;
+import com.example.project_myvntour.Adapter.AdapterLoaiKhachSanj;
 import com.example.project_myvntour.Database.SelectAll;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.R;
@@ -36,10 +37,10 @@ public class BestForYouActivity extends AppCompatActivity implements AdapterBest
                 onBackPressed();
             }
         });
-        getSupportActionBar().setTitle("Best For You");
+        getSupportActionBar().setTitle("Tốt Nhất Cho Bạn");
 
         SelectAll selectAll = new SelectAll(this);
-        list= selectAll.getListKhachSan();
+        list= selectAll.getListKhachSanByHotel(AdapterLoaiKhachSanj.index);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapterBestForYou = new AdapterBestForYou(this,this);
         adapterBestForYou.setData(list);

@@ -21,7 +21,7 @@ public class HygienepolicyActivity extends AppCompatActivity {
         setSupportActionBar(toolBar2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Hygienepolicy");
+        getSupportActionBar().setTitle("Chính sách vệ sinh");
         contenbacsi = (LinearLayout) findViewById(R.id.contenbacsi);
 
     }

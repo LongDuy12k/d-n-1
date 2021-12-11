@@ -49,6 +49,7 @@
                     android:backgroundTint="@color/blue"
                     android:textColor="@color/black"
                     android:hint="Username"
+                    android:text="admin"
                     android:drawablePadding="10dp"
                     android:drawableLeft="@drawable/ic_baseline_person_outline_24"/>
             <TextView
@@ -66,6 +67,8 @@
                 android:backgroundTint="@color/blue"
                 android:textColor="@color/black"
                 android:hint="Password"
+                android:text="admin"
+                android:inputType="textPassword"
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/ic_outline_lock_24"/>
             <TextView

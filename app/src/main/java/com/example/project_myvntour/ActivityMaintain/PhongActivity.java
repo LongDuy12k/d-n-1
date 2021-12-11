@@ -48,7 +48,10 @@ public class PhongActivity extends AppCompatActivity implements AdapterPhong.Lis
 
     @Override
     public void DatPhong(View v, int position) {
-        startActivity(new Intent(PhongActivity.this, BookNowActivity.class));
+        Phong x = list.get(position);
+        Intent i = new Intent(this, BookNowActivity.class);
+        i.putExtra("phong" , x);
+        startActivity(i);
     }
 
     @Override
