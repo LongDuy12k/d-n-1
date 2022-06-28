@@ -18,12 +18,14 @@ import com.example.project_myvntour.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Profile_Activity extends AppCompatActivity {
     MaterialToolbar toolbar;
     private LinearLayout itemPhone;
     private TextView tvPhone;
     private LinearLayout itemDx;
-    private CircularImageView imgAnh;
+    private CircleImageView imgAnh;
     private TextView tvTen;
     private LinearLayout itemTtnd;
     private LinearLayout itemTb;
@@ -42,7 +44,7 @@ public class Profile_Activity extends AppCompatActivity {
         itemPhone = (LinearLayout) findViewById(R.id.item_phone);
         tvPhone = (TextView) findViewById(R.id.tv_phone);
         itemDx = (LinearLayout) findViewById(R.id.item_dx);
-        imgAnh = (CircularImageView) findViewById(R.id.img_anh);
+        imgAnh = (CircleImageView) findViewById(R.id.hinhanhquanli);
         tvTen = (TextView) findViewById(R.id.tv_ten);
         itemTtnd = (LinearLayout) findViewById(R.id.item_ttnd);
         itemTb = (LinearLayout) findViewById(R.id.item_tb);
@@ -55,7 +57,7 @@ public class Profile_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Profile");
+        getSupportActionBar().setTitle("Hồ Sơ");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +69,17 @@ public class Profile_Activity extends AppCompatActivity {
         if(selectAll.anhKH(name) == null){
             return;
         }
+        itemBookmark.setOnClickListener(v->{
+            startActivity(new Intent(Profile_Activity.this , BookMartActivity.class));
+        });
+        itemTb.setOnClickListener(v->{
+            startActivity(new Intent(this,TourKhamPhaActivity.class));
+        });
+        itemTtnd.setOnClickListener(v->{
+            startActivity(new Intent(this,HoSoActivity.class));
+        });
         imgAnh.setImageBitmap(BitmapFactory.decodeByteArray(selectAll.anhKH(name),0,selectAll.anhKH(name).length));
+        System.out.println("zzzzzzzzzzzzzzzzzzz" + selectAll.anhKH(name));
         itemPhone.setOnClickListener(v ->{
             String phone = tvPhone.getText().toString();
             String call = "tel:" + phone.trim();
@@ -91,6 +103,18 @@ public class Profile_Activity extends AppCompatActivity {
         itemCs.setOnClickListener(v -> {
             startActivity(new Intent(this,CSBMatActivity.class));
         });
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        String name = LoginActivity.userName;
+        tvTen.setText(name);
+        if(selectAll.anhKH(name) == null){
+            return;
+        }
+        imgAnh.setImageBitmap(BitmapFactory.decodeByteArray(selectAll.anhKH(name),0,selectAll.anhKH(name).length));
 
     }
 }

@@ -1,8 +1,15 @@
 package com.example.project_myvntour.ActivityMaintain;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -11,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project_myvntour.Database.SelectAll;
+import com.example.project_myvntour.Mode.HoaDon;
 import com.example.project_myvntour.Mode.KhachSan;
 import com.example.project_myvntour.Mode.Phong;
 import com.example.project_myvntour.R;
@@ -74,7 +82,6 @@ public class HoanTatDatActivity extends AppCompatActivity {
         btnRentNow = (Button) findViewById(R.id.btnRentNow);
         mSelectAll = new SelectAll(this);
         makhachhang = this.getIntent().getStringExtra("makhachhang");
-        System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz " + makhachhang);
         final Calendar cl = Calendar.getInstance();
         datenow = cl.get(Calendar.YEAR)  + "-" + (cl.get(Calendar.MONTH) + 1) +"-" + cl.get(Calendar.DAY_OF_MONTH);
 
@@ -91,16 +98,6 @@ public class HoanTatDatActivity extends AppCompatActivity {
 
 
         khach = (KhachSan) getIntent().getSerializableExtra("khachSan");
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
-        System.out.println("xxxxxxxxxxxxxxxx " + khach.getSoLuongPHong());
         int soLuongPhongKhachSan = mSelectAll.getSoLuongPhongkhachSan(khach.getId());
         yeucaudacbiet = getIntent().getStringExtra("yeucaudacbiet");
         hoten = getIntent().getStringExtra("hoten");
@@ -108,12 +105,38 @@ public class HoanTatDatActivity extends AppCompatActivity {
         sdt = getIntent().getStringExtra("sdt");
         phong= mSelectAll.getPHongByIdVer1(Integer.parseInt(String.valueOf(maphongng)));
         showData();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name;
+            NotificationChannel chanal = new NotificationChannel("my", "myname",NotificationManager.IMPORTANCE_DEFAULT );
+            NotificationManager manage = getSystemService(NotificationManager.class);
+            manage.createNotificationChannel(chanal);
+        }
         btnRentNow.setOnClickListener(v->{
             mSelectAll.insertPhieuThue(Integer.parseInt(makhachhang) , Integer.parseInt(maphongng) ,(Integer.parseInt(nguoilon) + Integer.parseInt(trenho)) ,datenow ,ngayDao , hoten , sdt , email ,yeucaudacbiet   );
             mSelectAll.updateSOluongPHong(Integer.parseInt(maphongng) ,(Integer.parseInt(sophong) - 1));
             mSelectAll.updateSOluongPHongKhachSan(khach.getId() ,(mSelectAll.getSoLuongPhongkhachSan(khach.getId()) - 1));
             Toast.makeText(this, "Đặt Phòng thành công", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(HoanTatDatActivity.this , MainActivity.class));
+            String text = "Bạn đã đặt phòng thành công";
+            NotificationCompat.Builder buiilder = new NotificationCompat.Builder(HoanTatDatActivity.this , "my");
+            buiilder.setContentTitle("Đặt phòng thành công");
+            buiilder.setContentText(phong.getTenPhong() + " Đã tiếp nhận yêu cầu của bạn");
+            buiilder.setSmallIcon(R.drawable.logoapp);
+            buiilder.setAutoCancel(true);
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(HoanTatDatActivity.this);
+            notificationManagerCompat.notify(1 , buiilder.build());
+            Intent notifyIntent = new Intent(this, HoaDonActivity.class);
+// Set the Activity to start in a new, empty task
+            notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+// Create the PendingIntent
+            PendingIntent notifyPendingIntent = PendingIntent.getActivity(
+                    this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT
+            );
+            buiilder.setContentIntent(notifyPendingIntent);
+
+
+            Toast.makeText(this, "Đặt phòng thành công", Toast.LENGTH_SHORT).show();
+          startActivity(new Intent(HoanTatDatActivity.this , MainActivity.class));
         });
 
 

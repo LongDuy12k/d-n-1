@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DuoDrawerLayout drawerLayout;
     private MaterialToolbar toolbar;
     private ImageView basicon;
+    boolean doubleBackToExitPressedOnce = false;
     MenuItem menuItem;
 
     TextView badgeCounter;
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this,BookMartActivity.class));
                 break;
             case R.id.itemNotification:
-
+                startActivity(new Intent(this,TourKhamPhaActivity.class));
                 break;
             case R.id.itemMessage:
                 startActivity(new Intent(this,HoaDonActivity.class));
@@ -168,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.exit(0);
+               startActivity(new Intent(MainActivity.this,LoginActivity.class));
             }
         });
     }
@@ -177,7 +180,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onBackPressed() {
-        moveTaskToBack(false);
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
     @Override
     public void onResume() {

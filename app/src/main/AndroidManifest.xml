@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,6 +19,22 @@
         android:roundIcon="@drawable/logoapp"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_MyVnTour">
+        <activity android:name=".ActivityMaintain.ForGotPassActivity"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen"
+            ></activity>
+        <activity android:name=".ActivityMaintain.HoSoActivity" />
+        <activity android:name=".ActivityMaintain.TourKhamPhaActivity" />
+        <activity android:name=".ActivityMaintain.ImagePhongActivity" />
+        <activity
+            android:name=".ActivityMaintain.HoaDonChiTietActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Project_MyVnTour.Ver2" />
+        <activity android:name=".ActivityMaintain.BookMartActivity" />
+        <activity android:name=".ActivityMaintain.HoaDonActivity" />
+        <activity android:name=".ActivityMaintain.HoanTatDatActivity" />
+        <activity android:name=".ActivityMaintain.InFoKhachSanActivity" />
+        <activity android:name=".ActivityMaintain.BookNowActivity" />
+        <activity android:name=".ActivityMaintain.InfoRoomActivity" />
         <activity
             android:name=".ActivityMaintain.VeMyVnTourActivity"
             android:exported="false" />
@@ -26,13 +43,16 @@
             android:exported="false" />
         <activity
             android:name=".ActivityMaintain.SettingActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
         <activity
             android:name=".ActivityMaintain.Profile_Activity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
         <activity
             android:name=".ActivityMaintain.RevenuaActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Project_MyVnTour.FullScreen" />
         <activity
             android:name=".ActivityMaintain.PhongActivity"
             android:exported="false" />
@@ -64,7 +84,6 @@
         <activity
             android:name=".ActivityMaintain.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".ActivityMaintain.InFoKhachSanActivity" />
         <activity
             android:name=".ActivityMaintain.SigninActivity"
             android:exported="true"

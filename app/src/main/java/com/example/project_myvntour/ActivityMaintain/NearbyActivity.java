@@ -141,8 +141,6 @@ public class NearbyActivity extends AppCompatActivity implements OnMapReadyCallb
                     int position = getCurrentItem();// lấy vị trí
                     KhachSan khach = listKhachSan2.get(position);
                     liaCam(khach);
-
-
                 }
             }
         });

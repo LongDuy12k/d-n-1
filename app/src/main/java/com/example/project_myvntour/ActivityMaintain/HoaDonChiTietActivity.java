@@ -155,6 +155,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity {
                 mSelectAll.updateSOluongPHong(idphong ,(soluongPhong + 1));
                 mSelectAll.updateSOluongPHongKhachSan(khachSan.getId() ,(mSelectAll.getSoLuongPhongkhachSan(khachSan.getId()) + 1));
                 Toast.makeText(this, "Hủy Thành Công", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
                 onBackPressed();
             });
             dialog.show();

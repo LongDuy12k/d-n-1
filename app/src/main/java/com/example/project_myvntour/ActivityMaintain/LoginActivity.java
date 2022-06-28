@@ -39,22 +39,24 @@ public class LoginActivity extends AppCompatActivity {
             String u = etUsername.getText().toString();
             String p = etPassword.getText().toString();
             if(u.isEmpty()){
-                etUsername.setError("username is empty");
+                etUsername.setError("Tài Khoản không đc để trống");
             }else if(p.isEmpty()){
-                etPassword.setError("password is empty");
+                etPassword.setError("Mật Khẩu không đc để trống");
             }else {
                 if(selectAll.CheckLogin(u,p)==true){
                     userName = u;
                     id = selectAll.getIdUser(userName);
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }else {
-                    Toast.makeText(this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                 }
             }
 
         });
         textDangKi.setOnClickListener(v->{
             startActivity(new Intent(LoginActivity.this, SigninActivity.class));
+        });tvDangKi.setOnClickListener(v->{
+            startActivity(new Intent(LoginActivity.this, ForGotPassActivity.class));
         });
 
     }

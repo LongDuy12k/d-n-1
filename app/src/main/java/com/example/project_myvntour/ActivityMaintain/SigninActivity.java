@@ -40,21 +40,26 @@ public class SigninActivity extends AppCompatActivity {
                 String u = etUsername.getText().toString();
                 String p = etPassword.getText().toString();
                 if(e.isEmpty()){
-                    etMail.setError("Email is empty");
+                    etMail.setError("Email không đc để trống");
+                    return;
                 }else if(u.isEmpty()){
-                    etUsername.setError("Username is empty");
+                    etUsername.setError("Username không đc để trống");
+                    return;
                 }else if(p.isEmpty()){
-                    etPassword.setError("Password is empty");
+                    etPassword.setError("Password không đc để trống");
+                    return;
                 } else if(selectAll.CheckUser(u)==true){
-                    Toast.makeText(SigninActivity.this, "Username already exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SigninActivity.this, "Tên đăng kí đã được sử dụng", Toast.LENGTH_SHORT).show();
+                    return;
                 } else {
                     if(selectAll.Signin(e,u,p)){
-                        Toast.makeText(SigninActivity.this, "successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SigninActivity.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
                         etMail.setText("");
                         etUsername.setText("");
                         etPassword.setText("");
+                        onBackPressed();
                     }else {
-                        Toast.makeText(SigninActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SigninActivity.this, "Thao tác thật bại", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

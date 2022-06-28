@@ -95,6 +95,12 @@ public class AdapterLoaiKhachSanj extends RecyclerView.Adapter<AdapterLoaiKhachS
                 mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
                 mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
                 index = 4 ;
+            } else if(position == 4) {
+                listKhachSan = new ArrayList<>();
+                listKhachSan = mSelectAll.getListKhachSanByHotel(5);
+                mUpdateRecyclerView.callbacksChanged(position , listKhachSan);
+                mUpdateRecyclerView.callbacksChanged2(position , listKhachSan);
+                index = 5 ;
             }
 
 

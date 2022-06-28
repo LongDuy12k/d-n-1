@@ -124,7 +124,7 @@ public class BookNowActivity extends AppCompatActivity {
         cl.add(Calendar.DAY_OF_YEAR, 1);
          tomorrow = cl.getTime();
         ngayDao =(cl.get(Calendar.YEAR)) + "-" + (cl.get(Calendar.MONTH) +1) + "-" +  (cl.get(Calendar.DAY_OF_MONTH) +1);
-        dateTomorrow= (String.valueOf(tomorrow).substring(0,3) +", "+ (cl.get(Calendar.DAY_OF_MONTH)+1) + " tháng" + (cl.get(Calendar.MONTH) +1));
+        dateTomorrow= (String.valueOf(tomorrow).substring(0,3) +", "+ (cl.get(Calendar.DAY_OF_MONTH)) + " tháng" + (cl.get(Calendar.MONTH) +1));
         tvSoGiuong.setText(phong.getSoGiuong()+" Giường Đơn");
         intClick();
         showData();
@@ -197,6 +197,7 @@ public class BookNowActivity extends AppCompatActivity {
                 tvOLai.setText("Ở lại");
 
                 tvRoiKhoi.setOnClickListener(view->{
+                    dialog.cancel();
                    onBackPressed();
                 });
                 tvOLai.setOnClickListener(view->{

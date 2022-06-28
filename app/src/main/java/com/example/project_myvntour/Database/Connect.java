@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 public class Connect {
     Connection connection;
     public Connection getCollection(){
-        String ip = "192.168.0.105", port = "1433", user = "database2", pass = "123456", db = "MYVNTOUR";
+        String ip = "192.168.21.104", port = "1433", user = "abc", pass = "123456", db = "MYVNTOUR";
         StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(threadPolicy);
         try {

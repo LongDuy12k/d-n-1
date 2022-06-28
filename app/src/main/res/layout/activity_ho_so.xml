@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ActivityMaintain.HoSoActivity">
+<include layout="@layout/tool_bar4"/>
+<RelativeLayout
+    android:layout_marginTop="20dp"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/a"
+        />
+    <ImageView
+        android:id="@+id/btnChupAnh"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_outline_photo_camera_24"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/khungbackprofile"
+        />
+
+
+</RelativeLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:textColorHint="@color/blue"
+        app:hintTextColor="@color/blue"
+        app:boxStrokeColor="@color/blue"
+        android:layout_marginHorizontal="20dp"
+        app:boxBackgroundMode="filled"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etHoten"
+            android:inputType="number"
+            android:hint="Căn cước công dân"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:textColorHint="@color/blue"
+        app:hintTextColor="@color/blue"
+        app:boxStrokeColor="@color/blue"
+        android:layout_marginHorizontal="20dp"
+        app:boxBackgroundMode="filled"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEmail"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:textColorHint="@color/blue"
+        app:hintTextColor="@color/blue"
+        app:boxStrokeColor="@color/blue"
+        android:layout_marginHorizontal="20dp"
+        app:boxBackgroundMode="filled"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etDiaChi"
+            android:hint="Địa chỉ"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:textColorHint="@color/blue"
+        app:hintTextColor="@color/blue"
+        app:boxStrokeColor="@color/blue"
+        android:layout_marginHorizontal="20dp"
+        app:boxBackgroundMode="filled"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etSoDienThoai"
+            android:hint="Số điện thoại"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:id="@+id/btnLuuLai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/khunglogin"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Lưu lại"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/white"
+        app:backgroundTint="@null" />
+</LinearLayout>

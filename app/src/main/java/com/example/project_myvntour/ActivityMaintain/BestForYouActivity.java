@@ -27,7 +27,6 @@ public class BestForYouActivity extends AppCompatActivity implements AdapterBest
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_best_for_you);
         recyclerView = findViewById(R.id.recyclerview);
-
         toolBar2 = (MaterialToolbar) findViewById(R.id.tool_bar2);
         setSupportActionBar(toolBar2);
         toolBar2.setNavigationIcon(R.drawable.ic_baseline_close_24);

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityMaintain.ForGotPassActivity">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginLeft="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="20dp"
+        android:background="@null"
+        android:backgroundTint="@null"
+        android:backgroundTintMode="@null"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="mail.json"
+        app:lottie_loop="true"
+        />
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/blue"
+        android:text="Quên mật khẩu"
+        android:textSize="25dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:id="@+id/tvGhiChu"
+        android:textColor="@color/blue"
+        android:text="Nhập địa chỉ email được liên kết với tài khoản của bạn"
+        android:textSize="15dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="25dp"
+    android:textColorHint="@color/blue"
+    app:hintTextColor="@color/blue"
+    app:boxStrokeColor="@color/blue"
+    android:layout_marginHorizontal="20dp"
+    android:layout_height="wrap_content"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etEmail"
+        android:hint="Email"/>
+</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
+        android:visibility="gone"
+        android:id="@+id/contenmatkhau"
+        android:textColorHint="@color/blue"
+        app:hintTextColor="@color/blue"
+        app:boxStrokeColor="@color/blue"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etMatkhau"
+            android:inputType="textPassword"
+            android:hint="Mật khẩu mới"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:id="@+id/btnGuiYeuCau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/khunglogin"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Gửi yêu cầu"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/white"
+        app:backgroundTint="@null" />
+    <Button
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:id="@+id/btnSumit"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/khunglogin"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Xác Nhận"
+        android:textAllCaps="false"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/white"
+        app:backgroundTint="@null" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/tvQuayVe"
+        android:textColor="@color/blue"
+        android:text="Quay Về Đăng Nhập"
+        android:textSize="15dp"/>
+</LinearLayout>

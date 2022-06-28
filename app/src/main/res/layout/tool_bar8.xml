@@ -4,10 +4,10 @@
     android:id="@+id/tool_bar2"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/white"
+    android:background="@color/blue"
     app:elevation="8dp"
     android:elevation="8dp"
-    app:titleTextColor="@color/black"
-    app:navigationIconTint="@color/black"
+    app:navigationIconTint="@color/white"
+    app:titleTextColor="@color/white"
     android:theme="@style/ToolbarTheme">
 </com.google.android.material.appbar.MaterialToolbar>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/tool_bar2"
+    android:id="@+id/tool_bar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/white"
-    app:elevation="8dp"
-    android:elevation="8dp"
-    app:titleTextColor="@color/black"
+    android:background="@null"
     app:navigationIconTint="@color/black"
+    android:layout_marginHorizontal="8dp"
+    app:titleTextColor="@color/black"
     android:theme="@style/ToolbarTheme">
 </com.google.android.material.appbar.MaterialToolbar>
