@@ -10,12 +10,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/ivAnhKhachSan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/anh5"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/anh5" />
         <TextView
             android:visibility="gone"
             android:layout_width="wrap_content"
